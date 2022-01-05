@@ -6,8 +6,9 @@
         <a href="{{ url_for('home') }}">
             <h4 class="logo text-center"><span class="logo-colour"><i class="fad fa-lightbulb-on fa-3x"></i></span></h4>
         </a>
+        <h1 class="text-center">Log In</h1>
         <br>
-		<p class="text-center" style="font-size: 18px;">Please fill in this form to log in!</p>
+		<div class="hint-text text-center">Don't Have An Account? <a href="{{ url_for('register') }}">Sign Up here</a></div>
         <div class="form-group">
         	<input type="email" class="form-control" name="email" placeholder="Email Address" required="required">
         </div>
@@ -18,6 +19,5 @@
             <button type="submit" class="btn btn-orange btn-block btn-lg">Log In</button>
         </div>
     </form>
-	<div class="hint-text text-center">Don't Have An Account? <a href="{{ url_for('register') }}">Sign Up here</a></div>
 </div>
 {% endblock %}

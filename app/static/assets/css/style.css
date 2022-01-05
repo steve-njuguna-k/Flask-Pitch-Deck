@@ -90,7 +90,7 @@ a:hover {
 }
 
 .login-form form {
-	color: #999;
+	color: #000;
 	border-radius: 0px;
 	margin-bottom: 15px;
 	background: #fff;
@@ -99,7 +99,7 @@ a:hover {
 }
 
 .login-form h2  {
-	color: #333;
+	color: #000;
 	font-weight: bold;
 	margin-top: 0;
 }
@@ -129,12 +129,13 @@ a:hover {
 	font-weight: bold;
 	background: #000;
 	border: none;
-	min-width: 140px;
+	min-height: 50px;
 }
 
 .login-form .btn:hover, .login-form .btn:focus {
 	background: #f04600 !important;
 	outline: none;
+	min-height: 50px;
 }
 
 .login-form a {
@@ -166,7 +167,7 @@ a:hover {
 }
 
 .signup-form form {
-	color: #999;
+	color: #000;
 	border-radius: 0px;
 	margin-bottom: 15px;
 	background: #fff;
@@ -174,7 +175,7 @@ a:hover {
 	padding: 30px;
 }
 .signup-form h2  {
-	color: #333;
+	color: #000;
 	font-weight: bold;
 	margin-top: 0;
 }
@@ -203,12 +204,13 @@ a:hover {
 	font-weight: bold;
 	background: #000;
 	border: none;
-	min-width: 140px;
+	min-height: 50px;
 }
 
 .signup-form .btn:hover, .signup-form .btn:focus {
 	background: #f04600 !important;
 	outline: none;
+	min-height: 50px;
 }
 
 .signup-form a {
