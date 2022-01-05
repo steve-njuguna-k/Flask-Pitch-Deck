@@ -1,0 +1,65 @@
+body {
+    font-family:'Nunito', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #fff;
+    color: #000;
+}
+
+p {
+    font-size: 14px;
+}
+
+a {
+    text-decoration: none;
+    color: #004b7c;
+}
+
+a:hover {
+    text-decoration: none;
+    color: #0073b1;
+}
+
+.landing {
+    margin-top: 90px;
+}
+
+.navbar.navbar-dark .nav-item .nav-link { 
+    color: #0073b1!important; 
+    background-color: #fff;
+} 
+
+.navbar.navbar-dark .nav-item .nav-link:hover { 
+    color: #004b7c!important; 
+    background-color: #fff;
+}
+
+.navbar {
+    background-color: #fff!important;
+}
+
+.navbar-nav {
+    background-color: #fff;
+}
+
+.navbar-brand {
+    background-color: #fff;
+}
+
+.btn-blue{
+    background-color: #004b7c;
+    color: #fff;
+    border-radius: 0%;
+}
+
+.btn-blue:hover{
+    background-color: #0073b1;
+    color: #fff;
+    border-radius: 0%;
+}
+
+.logo{
+    margin-top: 10px;
+}
+
+.logo-colour {
+    color: #004b7c;
+}
