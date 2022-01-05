@@ -14,44 +14,15 @@
 <body>
 
     <div class="container">
-        {% block navbar %}
-            <div class="container-fluid">
-                <nav class="navbar navbar-expand-lg navbar-dark fixed-top shadow-sm">
-                    <div class="container">
-                        <h4 class="logo"><span class="logo-colour"><i class="fad fa-lightbulb-on fa-lg"></i></span><b> Pitch</b>Deck</h4>
-                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-                        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                            <ul class="navbar-nav mx-auto">
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">Inspirational Quotes</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">Positive Quotes</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">Life Quotes</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">Motivational Quotes</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">Funny Quotes</a>
-                                </li>
-                            </ul>
-                            <div class="d-flex">
-                            <button class="btn btn-md btn-blue ms-3" data-toggle="modal" data-target="#exampleModal"><b>Add A Quote</b></button>
-                            </div>
-                        </div>
-                    </div>
-                </nav>
-            </div>
-        {% endblock %}
+        {% include 'Navbar.html' %}
     </div>
 
     <div class="container">
         {% block content %} {% endblock %}
+    </div>
+
+    <div class="container footer">
+        {% include 'Footer.html' %}
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>

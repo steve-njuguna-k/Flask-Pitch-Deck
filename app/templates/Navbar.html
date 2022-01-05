@@ -1,0 +1,39 @@
+<div class="container-fluid">
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top shadow-sm">
+        <div class="container">
+            <a href="{{ url_for('home') }}">
+                <h4 class="logo"><span class="logo-colour"><i class="fad fa-lightbulb-on fa-lg"></i></span><b> Pitch</b><span class="logo-colour">Deck</span></h4>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Creative Pitches</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Business Pitches</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Pickup Lines</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Interview Pitches</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Product Pitches</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Marketing Pitches</a>
+                    </li>
+                </ul>
+                <div class="d-flex">
+                    <a href="{{ url_for('login') }}">
+                        <button class="btn btn-md btn-blue ms-3" data-toggle="modal" data-target="#exampleModal"><b>Log In </b><i class="fal fa-sign-in"></i></button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+</div>

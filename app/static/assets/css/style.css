@@ -1,21 +1,21 @@
 body {
     font-family:'Nunito', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #fff;
+    background-color: #f5f9fa;
     color: #000;
 }
 
 p {
-    font-size: 14px;
+    font-size: 20px;
 }
 
 a {
     text-decoration: none;
-    color: #004b7c;
+    color: #000;
 }
 
 a:hover {
     text-decoration: none;
-    color: #0073b1;
+    color: #000;
 }
 
 .landing {
@@ -23,12 +23,12 @@ a:hover {
 }
 
 .navbar.navbar-dark .nav-item .nav-link { 
-    color: #0073b1!important; 
+    color: #004b7c!important; 
     background-color: #fff;
 } 
 
 .navbar.navbar-dark .nav-item .nav-link:hover { 
-    color: #004b7c!important; 
+    color: #0073b1!important; 
     background-color: #fff;
 }
 
@@ -42,6 +42,10 @@ a:hover {
 
 .navbar-brand {
     background-color: #fff;
+}
+
+.navbar-nav{
+    margin-top: 5px;
 }
 
 .btn-blue{
@@ -62,4 +66,9 @@ a:hover {
 
 .logo-colour {
     color: #004b7c;
+}
+
+.footer{
+    margin-top: 50px;
+    margin-bottom: 50px;
 }
