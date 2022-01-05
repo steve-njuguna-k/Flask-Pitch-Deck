@@ -74,71 +74,162 @@ a:hover {
 	box-shadow: none !important;
 	border: none;
 }
+
 .form-control:focus {
 	background: #e2e2e2;
 }
+
 .form-control, .btn {        
-	border-radius: 3px;
+	border-radius: 0px;
 }
+
 .login-form {
 	width: 400px;
 	margin: 30px auto;
     margin-top: 100px;
 }
+
 .login-form form {
 	color: #999;
-	border-radius: 3px;
+	border-radius: 0px;
 	margin-bottom: 15px;
 	background: #fff;
 	box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
 	padding: 30px;
 }
+
 .login-form h2  {
 	color: #333;
 	font-weight: bold;
 	margin-top: 0;
 }
+
 .login-form hr  {
 	margin: 0 -30px 20px;
-}    
+} 
+
 .login-form .form-group {
 	margin-bottom: 20px;
 }
+
 .login-form input[type="checkbox"] {
 	margin-top: 3px;
 }
+
 .login-form .row div:first-child {
 	padding-right: 10px;
 }
+
 .login-form .row div:last-child {
 	padding-left: 10px;
 }
+
 .login-form .btn {        
 	font-size: 16px;
 	font-weight: bold;
-	background: #f04600;
+	background: #000;
 	border: none;
 	min-width: 140px;
 }
+
 .login-form .btn:hover, .login-form .btn:focus {
-	background: #000 !important;
+	background: #f04600 !important;
 	outline: none;
 }
+
 .login-form a {
 	color: #f04600;
 	text-decoration: none;
 }
+
 .login-form a:hover {
 	text-decoration: none;
 }
+
 .login-form form a {
 	color: #f04600;
 	text-decoration: none;
 }	
+
 .login-form form a:hover {
 	text-decoration: none;
 }
+
 .login-form .hint-text  {
+	padding-bottom: 15px;
+	text-align: center;
+}
+
+.signup-form {
+	width: 400px;
+	margin: 30px auto;
+}
+
+.signup-form form {
+	color: #999;
+	border-radius: 0px;
+	margin-bottom: 15px;
+	background: #fff;
+	box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+	padding: 30px;
+}
+.signup-form h2  {
+	color: #333;
+	font-weight: bold;
+	margin-top: 0;
+}
+
+.signup-form hr  {
+	margin: 0 -30px 20px;
+}   
+
+.signup-form .form-group {
+	margin-bottom: 20px;
+}
+
+.signup-form input[type="checkbox"] {
+	margin-top: 3px;
+}
+.signup-form .row div:first-child {
+	padding-right: 10px;
+}
+
+.signup-form .row div:last-child {
+	padding-left: 10px;
+}
+
+.signup-form .btn {        
+	font-size: 16px;
+	font-weight: bold;
+	background: #000;
+	border: none;
+	min-width: 140px;
+}
+
+.signup-form .btn:hover, .signup-form .btn:focus {
+	background: #f04600 !important;
+	outline: none;
+}
+
+.signup-form a {
+	color: #f04600;
+	text-decoration: none;
+}
+
+.signup-form a:hover {
+	text-decoration: none;
+}
+
+.signup-form form a {
+	color: #f04600;
+	text-decoration: none;
+}	
+
+.signup-form form a:hover {
+	text-decoration: none;
+}
+
+.signup-form .hint-text  {
 	padding-bottom: 15px;
 	text-align: center;
 }
