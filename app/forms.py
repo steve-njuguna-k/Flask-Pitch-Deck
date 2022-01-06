@@ -1,9 +1,10 @@
 from wtforms import Form, StringField, PasswordField, validators
-from wtforms.validators import DataRequired
+from wtforms.fields.simple import EmailField
+from wtforms.validators import DataRequired, Email
 
 # Creating Login Form contains email and password
 class LoginForm(Form):
-    email = StringField("Email", validators=[validators.Length(min=7, max=50), validators.DataRequired(message="Please Fill This Field")])
+    email = EmailField("Emai Address", validators=[validators.Email(), validators.DataRequired(message="Please Fill This Field")])
     password = PasswordField("Password", validators=[validators.DataRequired(message="Please Fill This Field")])
 
 # Creating Registration Form contains username, name, email, password and confirm password.
