@@ -1,5 +1,5 @@
 from app import app
-from flask import render_template, flash, redirect, request, session, logging, url_for
+from flask import render_template, flash, redirect, request, session, url_for
 from .forms import RegisterForm, LoginForm
 from .models import UserModel, db
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -8,7 +8,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 def home():
     return render_template('Index.html')
 
-@app.route('/login/', methods = ['GET', 'POST'])
+@app.route('/login/', methods = ['POST'])
 def login():
     # Creating Login form object
     form = LoginForm(request.form)
@@ -37,7 +37,7 @@ def login():
     return render_template('Login.html', form = form)
 
 
-@app.route('/register/', methods = ['GET', 'POST'])
+@app.route('/register/', methods = ['POST'])
 def register():
      # Creating RegistrationForm class object
     form = RegisterForm(request.form)
@@ -66,3 +66,10 @@ def register():
     else:
         # if method is Get, than render registration form
         return render_template('Register.html', form = form)
+
+@app.route('/logout/')
+def logout():
+    # Removing data from session by setting logged_flag to False.
+    session['logged_in'] = False
+    # redirecting to home page
+    return redirect(url_for('home'))
