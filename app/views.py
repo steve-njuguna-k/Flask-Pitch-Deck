@@ -8,7 +8,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 def home():
     return render_template('Index.html')
 
-@app.route('/login/', methods = ['POST'])
+@app.route('/login/', methods = ['GET', 'POST'])
 def login():
     # Creating Login form object
     form = LoginForm(request.form)
@@ -37,7 +37,7 @@ def login():
     return render_template('Login.html', form = form)
 
 
-@app.route('/register/', methods = ['POST'])
+@app.route('/register/', methods = ['GET', 'POST'])
 def register():
      # Creating RegistrationForm class object
     form = RegisterForm(request.form)
