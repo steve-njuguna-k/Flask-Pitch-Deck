@@ -48,6 +48,10 @@ a:hover {
     margin-top: 5px;
 }
 
+.btn{
+	text-decoration: none;
+}
+
 .btn-orange{
     background-color: #f04600;
     color: #fff;
@@ -234,6 +238,27 @@ a:hover {
 .signup-form .hint-text  {
 	padding-bottom: 15px;
 	text-align: center;
+}
+
+.btn-link {
+    font-weight: 400;
+    color: #000;
+    text-decoration: none;
+}
+
+.btn-link:hover {
+    font-weight: 400;
+    color: #000;
+    text-decoration: none;
+}
+
+.btn:focus, .btn:active {
+	outline: none !important;
+	-webkit-box-shadow: none
+}
+
+.dropdown-item:focus, .dropdown-item:active{
+	background-color: #f04600;
 }
 
 .footer{

@@ -29,9 +29,21 @@
                     </li>
                 </ul>
                 <div class="d-flex">
+                {% if current_user.is_authenticated %}
+                    <div class="dropdown">
+                        <button class="btn btn-orange dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
+                        <i class="fal fa-user fa-lg"></i> {{ current_user.username  }}
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="#"><i class="fal fa-plus-square"></i> Add A Pitch</a>
+                            <a class="dropdown-item" href="{{ url_for('logout') }}"><i class="fal fa-sign-out"></i> Logout</a>
+                        </div>
+                    </div>
+                {% else %}
                     <a href="{{ url_for('login') }}">
                         <button class="btn btn-md btn-orange ms-3" data-toggle="modal" data-target="#exampleModal"><b>Log In </b><i class="fal fa-sign-in"></i></button>
                     </a>
+                {% endif %}
                 </div>
             </div>
         </div>

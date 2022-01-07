@@ -9,7 +9,13 @@
 	<div class="text-center landing">
 		<h1><span class="logo-colour">First Impression</span> Is Everything!</h1>
 		<p>In life, you only have 60 seconds to impress someone. 1 minute can make or break you. How do we make sure that you use your 1 minute to actually say something meaningful? Express yourself in the most interesting way possible.</p>
-		<button class="btn btn-lg btn-orange ms-3"><i class="fal fa-pen"></i> Add A Pitch</button>
+		{% if current_user.is_authenticated %}
+			<button class="btn btn-lg btn-orange ms-3"><i class="fal fa-plus-square"></i> Add A Pitch</button>
+		{% else %}
+			<a href="{{ url_for('login') }}">
+				<button class="btn btn-lg btn-orange ms-3"><i class="fal fa-pen"></i> Get Started</button>
+			</a>
+		{% endif %}
 	</div>
 
 {% endblock content %}

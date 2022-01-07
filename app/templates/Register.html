@@ -2,15 +2,7 @@
 
 {% block content %} 
 <div class="signup-form">
-    {% with messages = get_flashed_messages() %}
-        {% if messages %}
-            <div class="notification is-danger">
-                {{ messages[0] }}. Go to <a href="{{ url_for('login') }}">login page</a>.
-            </div>
-        {% endif %}
-    {% endwith %}
-    <form action="/register" method="POST">
-        <div class="msg">{{ msg }}</div>
+    <form action="" method="POST">
         <a href="{{ url_for('home') }}">
             <h4 class="logo text-center"><span class="logo-colour"><i class="fad fa-lightbulb-on fa-3x"></i></span></h4>
         </a>

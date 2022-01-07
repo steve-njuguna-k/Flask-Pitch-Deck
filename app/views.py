@@ -33,14 +33,15 @@ def register():
         email = request.form['email']
         password = request.form['password']
  
-        if UserModel.query.filter_by(email=email):
-            return ('Email already Present')
-             
-        user = UserModel(first_name=first_name, last_name=last_name, email=email)
-        user.set_password(password)
-        db.session.add(user)
-        db.session.commit()
-        return redirect(url_for('login'))
+        if UserModel.query.filter_by(email = email).first():
+            flash('Email already Present')
+
+        else:   
+            user = UserModel(first_name = first_name, last_name = last_name, email = email, password=password)
+            user.set_password(password)
+            db.session.add(user)
+            db.session.commit()
+            return redirect(url_for('login'))
 
     return render_template('Register.html')
         
