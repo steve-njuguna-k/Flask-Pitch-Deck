@@ -18,6 +18,8 @@ def login():
         if user is not None and user.check_password(request.form['password']):
             login_user(user)
             return redirect(url_for('home'))
+        else:
+            flash('⚠️ Incorrect Email or Password! Try Again', 'danger')
      
     return render_template('Login.html')
 
@@ -34,14 +36,15 @@ def register():
         password = request.form['password']
  
         if UserModel.query.filter_by(email = email).first():
-            flash('Email already Present')
+            flash('⚠️ Email Already Taken! Choose Another One', 'danger')
 
         else:   
             user = UserModel(first_name = first_name, last_name = last_name, email = email, password=password)
             user.set_password(password)
             db.session.add(user)
             db.session.commit()
-            return redirect(url_for('login'))
+            flash('✅ Registration Successful! You can now log in', 'success')
+            return redirect(url_for('register'))
 
     return render_template('Register.html')
         
