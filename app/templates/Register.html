@@ -2,7 +2,15 @@
 
 {% block content %} 
 <div class="signup-form">
-    <form action="/examples/actions/confirmation.php" method="post">
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <div class="notification is-danger">
+                {{ messages[0] }}. Go to <a href="{{ url_for('login') }}">login page</a>.
+            </div>
+        {% endif %}
+    {% endwith %}
+    <form action="/register" method="POST">
+        <div class="msg">{{ msg }}</div>
         <a href="{{ url_for('home') }}">
             <h4 class="logo text-center"><span class="logo-colour"><i class="fad fa-lightbulb-on fa-3x"></i></span></h4>
         </a>
@@ -11,15 +19,15 @@
 		<div class="hint-text text-center">Already Have An Account? <a href="{{ url_for('login') }}">Log In</a></div>
         <div class="form-group">
 			<div class="row">
-				<div class="col"><input type="text" class="form-control" name="first_name" placeholder="First Name" required="required"></div>
-				<div class="col"><input type="text" class="form-control" name="last_name" placeholder="Last Name" required="required"></div>
+				<div class="col"><input type="text" class="form-control" id="first_name" name="first_name" placeholder="First Name" required="required"></div>
+				<div class="col"><input type="text" class="form-control" id="last_name" name="last_name" placeholder="Last Name" required="required"></div>
 			</div>        	
         </div>
         <div class="form-group">
-        	<input type="email" class="form-control" name="email" placeholder="Email" required="required">
+        	<input type="email" class="form-control" id="email" name="email" placeholder="Email" required="required">
         </div>
 		<div class="form-group">
-            <input type="password" class="form-control" name="password" placeholder="Password" required="required">
+            <input type="password" class="form-control" id="password" name="password" placeholder="Password" required="required">
         </div>
 		<div class="form-group">
             <input type="password" class="form-control" name="confirm_password" placeholder="Confirm Password" required="required">
