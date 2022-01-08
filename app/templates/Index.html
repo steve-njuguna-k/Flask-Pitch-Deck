@@ -10,12 +10,85 @@
 		<h1><span class="logo-colour">First Impression</span> Is Everything!</h1>
 		<p>In life, you only have 60 seconds to impress someone. 1 minute can make or break you. How do we make sure that you use your 1 minute to actually say something meaningful? Express yourself in the most interesting way possible.</p>
 		{% if current_user.is_authenticated %}
-			<button class="btn btn-lg btn-orange ms-3"><i class="fal fa-plus-square"></i> Add A Pitch</button>
+			<button class="btn btn-lg btn-blue ms-3" data-toggle="modal" data-target="#staticBackdrop"><i class="fal fa-plus-square"></i> Add A Pitch</button>
 		{% else %}
 			<a href="{{ url_for('login') }}">
-				<button class="btn btn-lg btn-orange ms-3"><i class="fal fa-pen"></i> Get Started</button>
+				<button class="btn btn-lg btn-blue ms-3"><i class="fal fa-pen"></i> Get Started</button>
 			</a>
 		{% endif %}
+	</div>
+
+	<br>
+
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-sm-4">
+				<div class="card shadow-sm">
+					<div class="card-body">
+						<h5 class="card-title">Creative Pitches</h5>
+						<p class="card-text ct">Successful creative projects are based on thinking, exploring, researching and generating ideas.</p>
+						<a href="#" class="btn btn-black">View All</a>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-4">
+				<div class="card shadow-sm">
+					<div class="card-body">
+						<h5 class="card-title">Business Pitches</h5>
+						<p class="card-text ct">A business pitch is a business plan that you present to your potential investors to secure funding.</p>
+						<a href="#" class="btn btn-black">View All</a>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-4">
+				<div class="card shadow-sm">
+					<div class="card-body">
+						<h5 class="card-title">Interview Pitches</h5>
+						<p class="card-text ct">A brief, 30 – 60 seconds speech that gets attention and makes the interviewer genuinely interested in you.</p>
+						<a href="#" class="btn btn-black">View All</a>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-4">
+				<div class="card shadow-sm">
+					<div class="card-body">
+						<h5 class="card-title">Sales Pitches</h5>
+						<p class="card-text ct">A sales pitch is a short, optimized presentation that packages your offerings in simple terms.</p>
+						<a href="#" class="btn btn-black">View All</a>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-4">
+				<div class="card shadow-sm">
+					<div class="card-body">
+						<h5 class="card-title">Product Pitches</h5>
+						<p class="card-text ct">If you are selling a product, the goal is to catch the buyer’s attention and convince them to learn more.</p>
+						<a href="#" class="btn btn-black">View All</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Modal -->
+	<div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+			<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+			</div>
+			<div class="modal-body">
+			...
+			</div>
+			<div class="modal-footer">
+			<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+			<button type="button" class="btn btn-blue">Save Pitch</button>
+			</div>
+		</div>
+		</div>
 	</div>
 
 {% endblock content %}

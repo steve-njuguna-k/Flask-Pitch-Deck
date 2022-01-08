@@ -15,6 +15,7 @@
         {% endif %}
     {% endwith %}
     <form action="" method="POST">
+        {{ csrf_token }}
         <a href="{{ url_for('home') }}">
             <h4 class="logo text-center"><span class="logo-colour"><i class="fad fa-lightbulb-on fa-3x"></i></span></h4>
         </a>
@@ -37,7 +38,7 @@
             <input type="password" class="form-control" name="confirm_password" placeholder="Confirm Password" required="required">
         </div>        
 		<div class="form-group">
-            <button type="submit" class="btn btn-orange btn-block btn-lg">Sign Up</button>
+            <button type="submit" class="btn btn-blue btn-block btn-lg">Sign Up</button>
         </div>
     </form>
 </div>
