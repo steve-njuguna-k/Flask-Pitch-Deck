@@ -1,6 +1,7 @@
 import datetime
 from app import app
 from flask import render_template, flash, redirect, request, url_for
+from .email import send_email
 from .models import UserModel, db
 from flask_login import current_user, login_user, logout_user, login_required
 from .token import confirm_token, generate_confirmation_token
@@ -47,6 +48,10 @@ def register():
             db.session.commit()
 
             token = generate_confirmation_token(user.email)
+            confirm_url = url_for('confirm_email', token = token, _external = True)
+            html = render_template('Activation.html', confirm_url = confirm_url)
+            subject = "Please Confirm Your Email Address"
+            send_email(user.email, subject, html)
 
             flash('✅ Registration Successful! Check Your Email  For A Verification Link', 'success')
             return redirect(url_for('register'))

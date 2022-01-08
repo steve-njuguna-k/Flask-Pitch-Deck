@@ -2,6 +2,7 @@ from flask import Flask
 from flask_migrate import Migrate
 from .models import db, login
 from flask_mail import Mail
+import os
 
 mail = Mail()
 
@@ -10,10 +11,10 @@ app = Flask(__name__)
 from app import views
 
 # Database Configuration and Creating object of SQLAlchemy
-app.config['SECRET_KEY'] = "+09vcm=z94^g3%ai)v0ip$*i0p!w^+y)6q=&ay8ll-ukei_x5n"
-app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://postgres:12345@localhost:5432/pitchDeckDB"
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['SECURITY_PASSWORD_SALT'] = app.config['SECRET_KEY']
+app.config['SECRET_KEY'] = os.environ['SECRET_KEY']
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['SQLALCHEMY_DATABASE_URI']
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = os.environ['SQLALCHEMY_TRACK_MODIFICATIONS']
+app.config['SECURITY_PASSWORD_SALT'] = os.environ['SECURITY_PASSWORD_SALT']
 
 db.init_app(app)
 migrate = Migrate(app, db)
