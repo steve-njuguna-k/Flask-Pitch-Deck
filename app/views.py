@@ -5,6 +5,7 @@ from .email import send_email
 from .models import UserModel, db
 from flask_login import current_user, login_user, logout_user, login_required
 from .token import confirm_token, generate_confirmation_token
+from .forms import LoginForm, RegisterForm
 
 @app.route('/')
 def home():
@@ -12,6 +13,7 @@ def home():
 
 @app.route('/login/', methods = ['GET', 'POST'])
 def login():
+    form = LoginForm()
     if current_user.is_authenticated:
         return redirect(url_for('home'))
      
@@ -27,7 +29,7 @@ def login():
         if not user:
             flash('⚠️ Incorrect Email or Password! Try Again', 'danger')
      
-    return render_template('Login.html')
+    return render_template('Login.html', form = form)
 
 
 @app.route('/register/', methods = ['GET', 'POST'])
