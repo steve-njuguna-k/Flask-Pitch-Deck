@@ -15,7 +15,7 @@ def home():
 def login():
     form = LoginForm()
     if form.validate_on_submit():
-        return f'''<h1> Welcome { form.email.data } </h1>'''
+        flash(f"✅ Welcome { form.email.data }", 'success')
     # if current_user.is_authenticated:
     #     return redirect(url_for('home'))
      
@@ -38,7 +38,7 @@ def login():
 def register():
     form = RegisterForm()
     if form.validate_on_submit():
-        return f'''<h1> Welcome { form.email.data } </h1>'''
+        flash(f"✅ Welcome { form.email.data }", 'success')
     # if current_user.is_authenticated:
     #     return redirect(url_for('home'))
      
