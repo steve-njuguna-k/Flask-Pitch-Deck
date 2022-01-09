@@ -48,7 +48,7 @@ def load_user(id):
     return UserModel.query.get(int(id))
 
 class Pitch(db.Model):
-    __tablename__='pitches'
+    __tablename__ = 'pitches'
 
     id = db.Column(db.Integer,primary_key=True)
     pitch_body = db.Column(db.String(255))
@@ -64,7 +64,7 @@ class Pitch(db.Model):
         return '<Pitch: {}>'.format(self.pitch_body)
 
 class Comment(db.Model):
-    __tablename__='comments'
+    __tablename__ = 'comments'
 
     id = db.Column(db.Integer,primary_key=True)
     comment = db.Column(db.String(255))
@@ -74,3 +74,20 @@ class Comment(db.Model):
 
     def __repr__(self):
         return '<Comment: {}>'.format(self.comment)
+
+class Like(db.Model):
+    __tablename__ = 'likes'
+
+    id = db.Column(db.Integer,primary_key=True)
+    pitches_id = db.Column(db.Integer,db.ForeignKey('pitches.id'))
+    user_id = db.Column(db.Integer,db.ForeignKey('users.id'))
+
+
+    @classmethod
+    def getlikes(cls,id):
+        likes = Like.query.filter_by(pitches_id=id).all()
+        return likes
+        
+    def save(self):
+        db.session.add(self)
+        db.session.commit()
