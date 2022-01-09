@@ -1,18 +1,18 @@
 from itsdangerous import URLSafeTimedSerializer
 from flask import app
-
+from .config import SECRET_KEY, SQLALCHEMY_DATABASE_URI
 
 def generate_confirmation_token(email):
-    serializer = URLSafeTimedSerializer(app.config['SECRET_KEY'])
-    return serializer.dumps(email, salt = app.config['SECURITY_PASSWORD_SALT'])
+    serializer = URLSafeTimedSerializer(SECRET_KEY)
+    return serializer.dumps(email, salt = SQLALCHEMY_DATABASE_URI)
 
 
 def confirm_token(token, expiration=3600):
-    serializer = URLSafeTimedSerializer(app.config['SECRET_KEY'])
+    serializer = URLSafeTimedSerializer(SECRET_KEY)
     try:
         email = serializer.loads(
             token,
-            salt = app.config['SECURITY_PASSWORD_SALT'],
+            salt = SQLALCHEMY_DATABASE_URI,
             max_age = expiration
         )
     except:

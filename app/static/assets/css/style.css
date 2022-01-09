@@ -1,7 +1,7 @@
 body {
     font-family:'Nunito', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #f9f9f9;
-    color: #003b6b;
+    color: #022b69;
 }
 
 p {
@@ -11,12 +11,12 @@ p {
 
 a {
     text-decoration: none;
-    color: #003b6b;
+    color: #022b69;
 }
 
 a:hover {
     text-decoration: none;
-    color: #003b6b;
+    color: #022b69;
 }
 
 .landing {
@@ -24,7 +24,7 @@ a:hover {
 }
 
 .navbar.navbar-dark .nav-item .nav-link { 
-    color: #003b6b!important; 
+    color: #022b69!important; 
     background-color: #fff;
 } 
 
@@ -50,9 +50,9 @@ a:hover {
 }
 
 .navbar-dark .navbar-toggler {
-    color: #003b6b;
-    border-color: #003b6b;
-	background-color: #003b6b;
+    color: #022b69;
+    border-color: #022b69;
+	background-color: #022b69;
 }
 
 .btn{
@@ -62,25 +62,25 @@ a:hover {
 .btn-blue{
     background-color: #22a6ab;
     color: #fff;
-    border-radius: 0%;
+    border-radius: 8px;
 }
 
 .btn-blue:hover{
-    background-color: #003b6b;
+    background-color: #022b69;
     color: #fff;
-    border-radius: 0%;
+    border-radius: 8px;
 }
 
 .btn-black{
-    background-color: #003b6b;
+    background-color: #022b69;
     color: #fff;
-    border-radius: 0%;
+    border-radius: 8px;
 }
 
 .btn-black:hover{
     background-color: #22a6ab;
     color: #fff;
-    border-radius: 0%;
+    border-radius: 8px;
 }
 
 .logo{
@@ -103,7 +103,7 @@ a:hover {
 }
 
 .form-control, .btn {        
-	border-radius: 0px;
+	border-radius: 8px;
 }
 
 .login-form {
@@ -113,8 +113,8 @@ a:hover {
 }
 
 .login-form form {
-	color: #003b6b;
-	border-radius: 0px;
+	color: #022b69;
+	border-radius: 8px;
 	margin-bottom: 15px;
 	background: #fff;
 	box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
@@ -122,7 +122,7 @@ a:hover {
 }
 
 .login-form h2  {
-	color: #003b6b;
+	color: #022b69;
 	font-weight: bold;
 	margin-top: 0;
 }
@@ -150,7 +150,7 @@ a:hover {
 .login-form .btn {        
 	font-size: 16px;
 	font-weight: bold;
-	background: #003b6b;
+	background: #022b69;
 	border: none;
 	min-height: 50px;
 }
@@ -190,15 +190,15 @@ a:hover {
 }
 
 .signup-form form {
-	color: #003b6b;
-	border-radius: 0px;
+	color: #022b69;
+	border-radius: 8px;
 	margin-bottom: 15px;
 	background: #fff;
 	box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
 	padding: 30px;
 }
 .signup-form h2  {
-	color: #003b6b;
+	color: #022b69;
 	font-weight: bold;
 	margin-top: 0;
 }
@@ -225,7 +225,7 @@ a:hover {
 .signup-form .btn {        
 	font-size: 16px;
 	font-weight: bold;
-	background: #003b6b;
+	background: #022b69;
 	border: none;
 	min-height: 50px;
 }
@@ -261,13 +261,13 @@ a:hover {
 
 .btn-link {
     font-weight: 400;
-    color: #003b6b;
+    color: #022b69;
     text-decoration: none;
 }
 
 .btn-link:hover {
     font-weight: 400;
-    color: #003b6b;
+    color: #022b69;
     text-decoration: none;
 }
 

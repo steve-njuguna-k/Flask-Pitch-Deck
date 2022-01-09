@@ -18,10 +18,13 @@ def login():
     if request.method == 'POST':
         email = request.form['email']
         user = UserModel.query.filter_by(email = email).first()
+        if user.email_verified==False:
+            flash('⚠️ Email is not verified, please check your inbox', 'danger')
+            
         if user is not None and user.check_password(request.form['password']):
             login_user(user)
             return redirect(url_for('home'))
-        else:
+        if not user:
             flash('⚠️ Incorrect Email or Password! Try Again', 'danger')
      
     return render_template('Login.html')
@@ -65,7 +68,6 @@ def logout():
     # redirecting to home page
     return redirect(url_for('home'))
 
-
 @login_required
 @app.route('/confirm/<token>')
 def confirm_email(token):
@@ -86,3 +88,13 @@ def confirm_email(token):
         flash('✅ You have confirmed your account! You can now log in', 'success')
 
     return redirect(url_for('login'))
+
+@login_required
+@app.route('/unconfirmed')
+def unconfirmed():
+    if current_user.confirmed:
+        return redirect('home')
+    else:
+        flash('⚠️ Please Confirm Your Email Address!', 'warning')
+        
+    return render_template('Login.html')

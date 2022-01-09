@@ -19,14 +19,14 @@ class UserModel(UserMixin, db.Model):
     email_verified = db.Column(db.Boolean, nullable=False, default=False)
     email_verified_on = db.Column(db.DateTime, nullable=True)
 
-    def __init__(self, first_name, last_name, email, password, confirmed, confirmed_on=None):
+    def __init__(self, first_name, last_name, email, password, email_verified, email_verified_on=None):
         self.first_name = first_name
         self.last_name = last_name
         self.email = email
         self.password = password
         self.registered_on = datetime.datetime.now()
-        self.confirmed = confirmed
-        self.confirmed_on = confirmed_on
+        self.email_verified = email_verified
+        self.email_verified_on = email_verified_on
 
     def __repr__(self):
         return f'<Email Address: {self.email}>'
