@@ -4,14 +4,15 @@ from flask import render_template, flash, redirect, request, url_for
 from .email import send_email
 from .models import UserModel, db
 from flask_login import current_user, login_user, logout_user, login_required
-from .forms import LoginForm, RegisterForm
+from .forms import LoginForm, RegisterForm, PitchForm
 from flask_bcrypt import Bcrypt
 from .token import confirm_token, generate_confirmation_token
 bcrypt = Bcrypt(app)
 
 @app.route('/')
 def home():
-    return render_template('Index.html')
+    form = PitchForm()
+    return render_template('Index.html', form = form)
 
 @app.route('/login/', methods = ['GET', 'POST'])
 def login():

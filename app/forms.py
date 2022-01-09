@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField
+from wtforms import StringField, PasswordField, SubmitField, SelectField, TextAreaField
 from wtforms.validators import DataRequired, Email, Length, EqualTo
 
 class LoginForm(FlaskForm):
@@ -14,3 +14,14 @@ class RegisterForm(FlaskForm):
     password = PasswordField(label='Password', validators=[DataRequired(), Length(min=6, max=255,  message='⚠️ Password strength must be between %(min)d and %(max)d characters!')], render_kw={"placeholder": "Password"})
     confirm_password = PasswordField(label='Confirm Password', validators=[DataRequired(), EqualTo('password', message='⚠️ The Passwords Entered Do Not Match!')], render_kw={"placeholder": "Confirm Password"})
     submit = SubmitField(label=('Sign Up'))
+
+class PitchForm(FlaskForm):
+    pitch_body = TextAreaField(label='Pitch',validators=[DataRequired(), Length(min=6, max=255,  message='⚠️ Pitch length must be between %(min)d and %(max)d characters!')], render_kw={"placeholder": "Your Pitch"})
+    category = SelectField(label='Select Category',choices=[
+        ('Creative Pitches', 'Creative Pitches'),
+        ('Business Pitches', 'Business Pitches'),
+        ('Interview Pitches', 'Interview Pitches'),
+        ('Sales Pitches', 'Sales Pitches'),
+        ('Product Pitches', 'Product Pitches')
+    ], render_kw={"placeholder": "Choose Category"})
+    submit = SubmitField('Submit')
