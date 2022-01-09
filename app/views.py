@@ -136,3 +136,8 @@ def interview():
 def sales():
     pitches = Pitch.query.filter_by(category = "Sales Pitches").order_by(Pitch.category.desc())
     return render_template('Sales.html', pitches = pitches)
+
+@app.route('/pitches/product', methods=['GET'])
+def product():
+    pitches = Pitch.query.filter_by(category = "Product Pitches").order_by(Pitch.category.desc())
+    return render_template('Product.html', pitches = pitches)
