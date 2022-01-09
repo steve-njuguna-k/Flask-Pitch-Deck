@@ -2,9 +2,9 @@ import datetime
 from app import app
 from flask import render_template, flash, redirect, request, url_for
 from .email import send_email
-from .models import UserModel, db, Pitch
+from .models import Comment, UserModel, db, Pitch
 from flask_login import current_user, login_user, logout_user, login_required
-from .forms import LoginForm, RegisterForm, PitchForm
+from .forms import CommentsForm, LoginForm, RegisterForm, PitchForm
 from flask_bcrypt import Bcrypt
 from .token import confirm_token, generate_confirmation_token
 bcrypt = Bcrypt(app)
@@ -113,5 +113,11 @@ def email_verification_sent():
 @app.route('/pitches')
 @login_required
 def my_pitches():
-    pitches = Pitch.query.filter_by(user_id=current_user._get_current_object().id)
-    return render_template('Pitches.html', pitches = pitches)
+    form = PitchForm
+    pitches = Pitch.query.filter_by(user_id = current_user._get_current_object().id)
+    return render_template('Pitches.html', pitches = pitches, form = form)
+
+@app.route('/pitches/business', methods=['GET'])
+def business():
+    pitches = Pitch.query.filter_by(category = "Business Pitches").order_by(Pitch.category.desc())
+    return render_template('Business.html', pitches = pitches)

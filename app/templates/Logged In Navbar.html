@@ -13,7 +13,7 @@
                         <a class="nav-link" href="#">Creative Pitches</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('business') }}">Business Pitches</a>
+                        <a class="nav-link" href="#">Business Pitches</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Interview Pitches</a>
@@ -32,8 +32,6 @@
                         <i class="fal fa-user fa-lg"></i>  {{ current_user.first_name }} {{ current_user.last_name }}
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#staticBackdrop"><i class="fal fa-plus-square"></i> Add A Pitch</a>
-                            <a class="dropdown-item" href="{{ url_for('my_pitches') }}"><i class="fal fa-file-alt"></i> My Pitches</a>
                             <a class="dropdown-item" href="{{ url_for('logout') }}"><i class="fal fa-sign-out"></i> Logout</a>
                         </div>
                     </div>
