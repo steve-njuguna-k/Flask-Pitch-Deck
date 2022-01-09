@@ -121,3 +121,13 @@ def my_pitches():
 def business():
     pitches = Pitch.query.filter_by(category = "Business Pitches").order_by(Pitch.category.desc())
     return render_template('Business.html', pitches = pitches)
+
+@app.route('/pitches/creative', methods=['GET'])
+def creative():
+    pitches = Pitch.query.filter_by(category = "Creative Pitches").order_by(Pitch.category.desc())
+    return render_template('Creative.html', pitches = pitches)
+
+@app.route('/pitches/interview', methods=['GET'])
+def interview():
+    pitches = Pitch.query.filter_by(category = "Interview Pitches").order_by(Pitch.category.desc())
+    return render_template('Interview.html', pitches = pitches)

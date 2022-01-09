@@ -1,0 +1,26 @@
+{% extends "Base.html" %}
+
+<div class="container">
+	{% include 'Logged In Navbar.html' %}
+</div>
+
+{% block content %}
+
+    <div class="container-fluid landing">
+		<h1 class="text-center pitch-title"><b>Interview <span class="logo-colour">Pitches</span></b></h1>
+		<div class="row">
+            {% for pitch in pitches %}
+			<div class="col-sm-4">
+				<div class="card shadow-sm">
+					<div class="card-body">
+						<p class="card-text ct">{{ pitch.category }}</p>
+						<p class="card-title">{{ pitch.pitch_body }}</p>
+						<p class="card-text ct">Added: {{ pitch.date_published.strftime('%Y-%m-%d') }}</p>
+					</div>
+				</div>
+			</div>
+			{% endfor %}
+		</div>
+	</div>
+
+{% endblock %}
