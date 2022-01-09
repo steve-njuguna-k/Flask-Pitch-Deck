@@ -46,3 +46,31 @@ class UserModel(UserMixin, db.Model):
 @login.user_loader
 def load_user(id):
     return UserModel.query.get(int(id))
+
+class Pitch(db.Model):
+    __tablename__='pitches'
+
+    id = db.Column(db.Integer,primary_key=True)
+    pitch_body = db.Column(db.String(255))
+    user_id = db.Column(db.Integer,db.ForeignKey('users.id'))
+    categories = db.Column(db.String(50))
+    comments = db.relationship('Comment', backref='pitch', lazy='dynamic')
+    date_published = db.Column(db.DateTime, default = datetime.datetime.utcnow())
+    likes = db.relationship("Like", backref="liker", lazy='dynamic')
+    dislikes = db.relationship("DisLike", backref="disliked", lazy='dynamic')
+
+    
+    def __repr__(self):
+        return '<Pitch: {}>'.format(self.pitch_body)
+
+class Comment(db.Model):
+    __tablename__='comments'
+
+    id = db.Column(db.Integer,primary_key=True)
+    comment = db.Column(db.String(255))
+    pitches_id = db.Column(db.Integer, db.ForeignKey('pitches.id'))
+    date_published = db.Column(db.DateTime, default = datetime.datetime.utcnow)
+    user_id = db.Column(db.Integer,db.ForeignKey('users.id'))
+
+    def __repr__(self):
+        return '<Comment: {}>'.format(self.comment)
