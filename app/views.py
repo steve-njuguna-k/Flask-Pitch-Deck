@@ -14,54 +14,59 @@ def home():
 @app.route('/login/', methods = ['GET', 'POST'])
 def login():
     form = LoginForm()
-    if current_user.is_authenticated:
-        return redirect(url_for('home'))
+    if form.validate_on_submit():
+        return f'''<h1> Welcome { form.email.data } </h1>'''
+    # if current_user.is_authenticated:
+    #     return redirect(url_for('home'))
      
-    if request.method == 'POST':
-        email = request.form['email']
-        user = UserModel.query.filter_by(email = email).first()
-        if user.email_verified==False:
-            flash('⚠️ Email is not verified, please check your inbox', 'danger')
+    # if request.method == 'POST':
+    #     email = request.form['email']
+    #     user = UserModel.query.filter_by(email = email).first()
+    #     if user.email_verified==False:
+    #         flash('⚠️ Email is not verified, please check your inbox', 'danger')
             
-        if user is not None and user.check_password(request.form['password']):
-            login_user(user)
-            return redirect(url_for('home'))
-        if not user:
-            flash('⚠️ Incorrect Email or Password! Try Again', 'danger')
+    #     if user is not None and user.check_password(request.form['password']):
+    #         login_user(user)
+    #         return redirect(url_for('home'))
+    #     if not user:
+    #         flash('⚠️ Incorrect Email or Password! Try Again', 'danger')
      
     return render_template('Login.html', form = form)
 
 
 @app.route('/register/', methods = ['GET', 'POST'])
 def register():
-    if current_user.is_authenticated:
-        return redirect(url_for('home'))
+    form = RegisterForm()
+    if form.validate_on_submit():
+        return f'''<h1> Welcome { form.email.data } </h1>'''
+    # if current_user.is_authenticated:
+    #     return redirect(url_for('home'))
      
-    if request.method == 'POST':
-        first_name = request.form['first_name']
-        last_name = request.form['last_name']
-        email = request.form['email']
-        password = request.form['password']
+    # if request.method == 'POST':
+    #     first_name = request.form['first_name']
+    #     last_name = request.form['last_name']
+    #     email = request.form['email']
+    #     password = request.form['password']
  
-        if UserModel.query.filter_by(email = email).first():
-            flash('⚠️ Email Already Taken! Choose Another One', 'danger')
+    #     if UserModel.query.filter_by(email = email).first():
+    #         flash('⚠️ Email Already Taken! Choose Another One', 'danger')
 
-        else:   
-            user = UserModel(first_name = first_name, last_name = last_name, email = email, password = password, confirmed = False)
-            user.set_password(password)
-            db.session.add(user)
-            db.session.commit()
+    #     else:   
+    #         user = UserModel(first_name = first_name, last_name = last_name, email = email, password = password, confirmed = False)
+    #         user.set_password(password)
+    #         db.session.add(user)
+    #         db.session.commit()
 
-            token = generate_confirmation_token(user.email)
-            confirm_url = url_for('confirm_email', token = token, _external = True)
-            html = render_template('Activation.html', confirm_url = confirm_url)
-            subject = "Please Confirm Your Email Address"
-            send_email(user.email, subject, html)
+    #         token = generate_confirmation_token(user.email)
+    #         confirm_url = url_for('confirm_email', token = token, _external = True)
+    #         html = render_template('Activation.html', confirm_url = confirm_url)
+    #         subject = "Please Confirm Your Email Address"
+    #         send_email(user.email, subject, html)
 
-            flash('✅ Registration Successful! Check Your Email  For A Verification Link', 'success')
-            return redirect(url_for('register'))
+    #         flash('✅ Registration Successful! Check Your Email  For A Verification Link', 'success')
+    #         return redirect(url_for('register'))
 
-    return render_template('Register.html')
+    return render_template('Register.html', form = form)
         
 
 @app.route('/logout')
@@ -73,30 +78,30 @@ def logout():
 @login_required
 @app.route('/confirm/<token>')
 def confirm_email(token):
-    try:
-        email = confirm_token(token)
-    except:
-        flash('⚠️ The confirmation link is invalid or has expired!', 'danger')
-    user = UserModel.query.filter_by(email=email).first_or_404()
+    # try:
+    #     email = confirm_token(token)
+    # except:
+    #     flash('⚠️ The confirmation link is invalid or has expired!', 'danger')
+    # user = UserModel.query.filter_by(email=email).first_or_404()
 
-    if user.confirmed:
-        flash('✅ Account already confirmed! Procee to log in.', 'success')
+    # if user.confirmed:
+    #     flash('✅ Account already confirmed! Procee to log in.', 'success')
 
-    else:
-        user.confirmed = True
-        user.confirmed_on = datetime.datetime.now()
-        db.session.add(user)
-        db.session.commit()
-        flash('✅ You have confirmed your account! You can now log in', 'success')
+    # else:
+    #     user.confirmed = True
+    #     user.confirmed_on = datetime.datetime.now()
+    #     db.session.add(user)
+    #     db.session.commit()
+    #     flash('✅ You have confirmed your account! You can now log in', 'success')
 
     return redirect(url_for('login'))
 
 @login_required
 @app.route('/unconfirmed')
 def unconfirmed():
-    if current_user.confirmed:
-        return redirect('home')
-    else:
-        flash('⚠️ Please Confirm Your Email Address!', 'warning')
+    # if current_user.confirmed:
+    #     return redirect('home')
+    # else:
+    #     flash('⚠️ Please Confirm Your Email Address!', 'warning')
         
     return render_template('Login.html')
