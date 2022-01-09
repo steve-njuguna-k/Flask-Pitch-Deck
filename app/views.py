@@ -21,7 +21,7 @@ def home():
         pitch_obj = Pitch(user_id = user_id, pitch_body = pitch_body, category = category)
         db.session.add(pitch_obj)
         db.session.commit()
-        
+
         return redirect(url_for('home'))
 
     return render_template('Index.html', form = form, pitches = pitches)
@@ -72,8 +72,8 @@ def register():
 
     return render_template('Register.html', form=form)
         
-@login_required
 @app.route('/logout')
+@login_required
 def logout():
     user = current_user
     user.authenticated = False
@@ -81,7 +81,6 @@ def logout():
     # redirecting to home page
     return redirect(url_for('home'))
 
-@login_required
 @app.route('/confirm/<token>')
 def confirm_email(token):
     if UserModel.confirmed==1:
@@ -102,7 +101,6 @@ def confirm_email(token):
 
     return redirect(url_for('login'))
 
-@login_required
 @app.route('/sent')
 def email_verification_sent():
     if UserModel.confirmed==1:
@@ -111,3 +109,9 @@ def email_verification_sent():
     else:
         flash('✅ Registration Successful! A Confirmation Link Has Been Sent To The Registered Email Address.', 'success')
         return redirect(url_for('register'))
+
+@app.route('/pitches')
+@login_required
+def my_pitches():
+    pitches = Pitch.query.filter_by(user_id=current_user._get_current_object().id)
+    return render_template('Pitches.html', pitches = pitches)
