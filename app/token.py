@@ -1,5 +1,4 @@
 from itsdangerous import URLSafeTimedSerializer
-from flask import app
 from .config import SECRET_KEY, SQLALCHEMY_DATABASE_URI
 
 def generate_confirmation_token(email):

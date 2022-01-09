@@ -4,8 +4,10 @@ from flask import render_template, flash, redirect, request, url_for
 from .email import send_email
 from .models import UserModel, db
 from flask_login import current_user, login_user, logout_user, login_required
-from .token import confirm_token, generate_confirmation_token
 from .forms import LoginForm, RegisterForm
+from flask_bcrypt import Bcrypt
+from .token import confirm_token, generate_confirmation_token
+bcrypt = Bcrypt(app)
 
 @app.route('/')
 def home():
@@ -13,64 +15,55 @@ def home():
 
 @app.route('/login/', methods = ['GET', 'POST'])
 def login():
-    form = LoginForm()
+    form = LoginForm(request.form)
     if form.validate_on_submit():
-        flash(f"✅ Welcome { form.email.data }", 'success')
-    # if current_user.is_authenticated:
-    #     return redirect(url_for('home'))
-     
-    # if request.method == 'POST':
-    #     email = request.form['email']
-    #     user = UserModel.query.filter_by(email = email).first()
-    #     if user.email_verified==False:
-    #         flash('⚠️ Email is not verified, please check your inbox', 'danger')
-            
-    #     if user is not None and user.check_password(request.form['password']):
-    #         login_user(user)
-    #         return redirect(url_for('home'))
-    #     if not user:
-    #         flash('⚠️ Incorrect Email or Password! Try Again', 'danger')
-     
-    return render_template('Login.html', form = form)
+        user = UserModel.query.filter_by(email=form.email.data).first()
+        if user and user.confirmed ==0:
+            flash('⚠️ Your Acount Is Not Activated! Please Check Your Email Inbox And Click The Activation Link We Sent To Activate It', 'danger')
+            return render_template('Login.html', form=form)
 
+        if user and bcrypt.check_password_hash(user.password, request.form['password']):
+            login_user(user)
+            return redirect(url_for('home'))
+        
+        if user and not bcrypt.check_password_hash(user.password, request.form['password']):
+            flash('⚠️ Invalid Password!', 'danger')
+            return render_template('Login.html', form=form)
+
+        if not user and bcrypt.check_password_hash(user.password, request.form['password']):
+            flash('⚠️ Invalid Email Address!', 'danger')
+            return render_template('Login.html', form=form)
+
+        if not user:
+            flash('⚠️ Account Does Not Exist!', 'danger')
+            return render_template('Login.html', form=form)
+
+    return render_template('Login.html', form=form)
 
 @app.route('/register/', methods = ['GET', 'POST'])
 def register():
-    form = RegisterForm()
+    form = RegisterForm(request.form)
     if form.validate_on_submit():
-        flash(f"✅ Welcome { form.email.data }", 'success')
-    # if current_user.is_authenticated:
-    #     return redirect(url_for('home'))
-     
-    # if request.method == 'POST':
-    #     first_name = request.form['first_name']
-    #     last_name = request.form['last_name']
-    #     email = request.form['email']
-    #     password = request.form['password']
- 
-    #     if UserModel.query.filter_by(email = email).first():
-    #         flash('⚠️ Email Already Taken! Choose Another One', 'danger')
+        password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
+        user = UserModel(first_name=form.first_name.data, last_name=form.last_name.data, email=form.email.data, password=password, confirmed=False)
+        db.session.add(user)
+        db.session.commit()
 
-    #     else:   
-    #         user = UserModel(first_name = first_name, last_name = last_name, email = email, password = password, confirmed = False)
-    #         user.set_password(password)
-    #         db.session.add(user)
-    #         db.session.commit()
+        token = generate_confirmation_token(user.email)
+        confirm_url = url_for('confirm_email', token=token, _external=True)
+        html = render_template('Activation.html', confirm_url=confirm_url)
+        subject = "[PITCH DECK] Confrim Your Email Address"
+        send_email(user.email, subject, html)
 
-    #         token = generate_confirmation_token(user.email)
-    #         confirm_url = url_for('confirm_email', token = token, _external = True)
-    #         html = render_template('Activation.html', confirm_url = confirm_url)
-    #         subject = "Please Confirm Your Email Address"
-    #         send_email(user.email, subject, html)
+        return redirect(url_for("email_verification_sent"))
 
-    #         flash('✅ Registration Successful! Check Your Email  For A Verification Link', 'success')
-    #         return redirect(url_for('register'))
-
-    return render_template('Register.html', form = form)
+    return render_template('Register.html', form=form)
         
-
+@login_required
 @app.route('/logout')
 def logout():
+    user = current_user
+    user.authenticated = False
     logout_user()
     # redirecting to home page
     return redirect(url_for('home'))
@@ -78,30 +71,30 @@ def logout():
 @login_required
 @app.route('/confirm/<token>')
 def confirm_email(token):
-    # try:
-    #     email = confirm_token(token)
-    # except:
-    #     flash('⚠️ The confirmation link is invalid or has expired!', 'danger')
-    # user = UserModel.query.filter_by(email=email).first_or_404()
+    if UserModel.confirmed==1:
+        flash('✅ Account Already Confirmed! You Can Log In.', 'success')
+        return redirect(url_for('login'))
 
-    # if user.confirmed:
-    #     flash('✅ Account already confirmed! Procee to log in.', 'success')
+    email = confirm_token(token)
+    user = UserModel.query.filter_by(email=email).first_or_404()
 
-    # else:
-    #     user.confirmed = True
-    #     user.confirmed_on = datetime.datetime.now()
-    #     db.session.add(user)
-    #     db.session.commit()
-    #     flash('✅ You have confirmed your account! You can now log in', 'success')
+    if user.email == email:
+        user.confirmed = True
+        user.confirmed_on = datetime.datetime.now()
+        db.session.add(user)
+        db.session.commit()
+        flash('✅ You Have Successfully Confirmed Your Email Address. You Can Now Log In. Thanks!', 'success')
+    else:
+        flash('⚠️ The Confirmation Link Is Invalid Or Has Expired.', 'danger')
 
     return redirect(url_for('login'))
 
 @login_required
-@app.route('/unconfirmed')
-def unconfirmed():
-    # if current_user.confirmed:
-    #     return redirect('home')
-    # else:
-    #     flash('⚠️ Please Confirm Your Email Address!', 'warning')
-        
-    return render_template('Login.html')
+@app.route('/sent')
+def email_verification_sent():
+    if UserModel.confirmed==1:
+        flash('✅ You Can Now Log In!', 'success')
+        return redirect(url_for('login'))
+    else:
+        flash('✅ Registration Successful! A Confirmation Link Has Been Sent To The Registered Email Address.', 'success')
+        return redirect(url_for('register'))

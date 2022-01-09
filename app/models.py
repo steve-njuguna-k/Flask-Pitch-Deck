@@ -1,7 +1,6 @@
 import datetime
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import UserMixin, LoginManager
-from werkzeug.security import generate_password_hash, check_password_hash
 
 db = SQLAlchemy()
 login = LoginManager()
@@ -16,26 +15,32 @@ class UserModel(UserMixin, db.Model):
     email = db.Column(db.String(50), unique=True)
     password = db.Column(db.String(256), unique=True)
     registered_on = db.Column(db.DateTime, nullable=False)
-    email_verified = db.Column(db.Boolean, nullable=False, default=False)
-    email_verified_on = db.Column(db.DateTime, nullable=True)
+    confirmed = db.Column(db.Boolean, nullable=False, default=False)
+    confirmed_on = db.Column(db.DateTime, nullable=True)
 
-    def __init__(self, first_name, last_name, email, password, email_verified, email_verified_on=None):
+    def __init__(self, first_name, last_name, email, password, confirmed, confirmed_on=None):
         self.first_name = first_name
         self.last_name = last_name
         self.email = email
         self.password = password
         self.registered_on = datetime.datetime.now()
-        self.email_verified = email_verified
-        self.email_verified_on = email_verified_on
+        self.confirmed = confirmed
+        self.confirmed_on = confirmed_on
+
+    def is_authenticated(self):
+        return True
+
+    def is_active(self):
+        return True
+
+    def is_anonymous(self):
+        return False
+
+    def get_id(self):
+        return self.id
 
     def __repr__(self):
-        return f'<Email Address: {self.email}>'
-
-    def set_password(self, password):
-        self.password = generate_password_hash(password)
-     
-    def check_password(self, password):
-        return check_password_hash(self.password, password)
+        return '<Email Address: {}'.format(self.email)
 
 #Since Flask_Login knows nothing about databases, we need to create a function to link both of them.
 @login.user_loader
