@@ -59,7 +59,6 @@ class Pitch(db.Model):
     likes = db.relationship("Like", backref="liker", lazy='dynamic')
     dislikes = db.relationship("DisLike", backref="disliked", lazy='dynamic')
 
-    
     def __repr__(self):
         return '<Pitch: {}>'.format(self.pitch_body)
 
@@ -82,12 +81,26 @@ class Like(db.Model):
     pitches_id = db.Column(db.Integer,db.ForeignKey('pitches.id'))
     user_id = db.Column(db.Integer,db.ForeignKey('users.id'))
 
-
     @classmethod
     def getlikes(cls,id):
         likes = Like.query.filter_by(pitches_id=id).all()
         return likes
-        
+
+    def save(self):
+        db.session.add(self)
+        db.session.commit()
+
+class DisLike(db.Model):
+    __tablename__ = 'dislikes'
+    id = db.Column(db.Integer,primary_key=True)
+    pitches_id = db.Column(db.Integer,db.ForeignKey('pitches.id'))
+    user_id = db.Column(db.Integer,db.ForeignKey('users.id'))
+
+    @classmethod
+    def getdislikes(cls,id):
+        dislikes=DisLike.query.filter_by(pitches_id=id).all()
+        return dislikes
+
     def save(self):
         db.session.add(self)
         db.session.commit()
