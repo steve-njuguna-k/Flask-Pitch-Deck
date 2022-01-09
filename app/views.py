@@ -117,6 +117,21 @@ def my_pitches():
     pitches = Pitch.query.filter_by(user_id = current_user._get_current_object().id)
     return render_template('Pitches.html', pitches = pitches, form = form)
 
+@app.route('/addComent/<pitch>', methods=['POST','GET'])
+@login_required
+def addComment(pitch):
+    form = CommentsForm()
+    pitch = Pitch.query.filter_by(id=pitch).first()
+    comment=form.comment.data
+    user_id = current_user._get_current_object().id
+
+    if form.validate_on_submit():
+        comment=Comment(comment = comment, pitch = pitch, user_id = user_id)
+        db.session.add(comment)
+        db.session.commit()
+        return redirect(url_for('addComment'))
+    return render_template('Add Comment.html', form = form)
+
 @app.route('/pitches/business', methods=['GET'])
 def business():
     pitches = Pitch.query.filter_by(category = "Business Pitches").order_by(Pitch.category.desc())

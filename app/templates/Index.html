@@ -83,9 +83,11 @@
 						<p class="card-text ct">Added: {{ pitch.date_published.strftime('%Y-%m-%d') }}</p>
 						<div class="text-center">
 							<br>
-							<button type="button" id="likes" class="btn btn-sm btn-success" ><i class="far fa-thumbs-up"></i> ( 0 ) Likes</button>
-							<button type="button" id="dislikes" class="btn btn-sm btn-danger" ><i class="far fa-thumbs-down"></i> ( 0 ) Dislikes</button>
-							<button type="button" id="trash" class="btn btn-sm btn-dark"><i class="far fa-comment"></i> Comment</button>
+							<button type="button" id="likes" class="btn btn-sm btn-success" ><i class="far fa-thumbs-up"></i> ( {{ pitch.likes.count() }} ) Likes</button>
+							<button type="button" id="dislikes" class="btn btn-sm btn-danger" ><i class="far fa-thumbs-down"></i> ( {{ pitch.dislikes.count() }} ) Dislikes</button>
+							<a href="/addComent/{{pitch.id}}">
+								<button type="button" id="trash" class="btn btn-sm btn-dark"><i class="far fa-comment"></i> ( {{ pitch.comment.count() }} ) Comments</button>
+							</a>
 						</div>
 					</div>
 				</div>
