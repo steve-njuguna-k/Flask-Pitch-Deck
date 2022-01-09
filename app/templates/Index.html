@@ -74,14 +74,17 @@
 		<h1><b>All <span class="logo-colour">Pitches</span></b></h1>
 		<hr><br>
 		<div class="row">
+			{% for pitch in pitches %}
 			<div class="col-sm-4">
 				<div class="card shadow-sm">
 					<div class="card-body">
-						<h5 class="card-title">Creative Pitches</h5>
-						<p class="card-text ct">Successful creative projects are based on thinking, exploring, researching and generating ideas.</p>
+						<p class="card-text ct">{{ pitch.category }}</p>
+						<p class="card-title">{{ pitch.pitch_body }}</p>
+						<p class="card-text ct">Added: {{ pitch.date_published }}</p>
 					</div>
 				</div>
 			</div>
+			{% endfor %}
 		</div>
 	</div>
 
