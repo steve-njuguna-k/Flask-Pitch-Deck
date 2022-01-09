@@ -55,6 +55,15 @@ a:hover {
 	background-color: #022b69;
 }
 
+.bg-blue{
+	background-color: #022b69;
+}
+
+.btn-outline-light:hover{
+	color: #022b69;
+	background-color: #fff;
+}
+
 .btn{
 	text-decoration: none;
 }

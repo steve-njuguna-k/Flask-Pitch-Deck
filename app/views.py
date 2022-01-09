@@ -130,13 +130,18 @@ def addComment(pitch):
         comment=Comment(comment = comment, pitch = pitch, user_id = user_id)
         db.session.add(comment)
         db.session.commit()
-        return redirect(url_for('home'))
+        return redirect(url_for('pitches'))
     return render_template('Add Comment.html', form = form, pitch = pitch, comments = comments)
 
 @app.route('/pitches/business', methods=['GET'])
 def business():
     pitches = Pitch.query.filter_by(category = "Business Pitches").order_by(Pitch.category.desc())
     return render_template('Business.html', pitches = pitches)
+
+@app.route('/pitches/all', methods=['GET'])
+def pitches():
+    pitches = Pitch.query.all()
+    return render_template('All Pitches.html', pitches = pitches)
 
 @app.route('/pitches/creative', methods=['GET'])
 def creative():

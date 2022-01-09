@@ -1,0 +1,34 @@
+{% extends "Base.html" %}
+
+<div class="container">
+	{% include 'Logged In Navbar.html' %}
+</div>
+
+{% block content %}
+
+    <div class="container-fluid landing">
+		<h1 class="text-center pitch-title"><b>All <span class="logo-colour">Pitches</span></b></h1>
+		<div class="row">
+            {% for pitch in pitches %}
+			<div class="col-sm-4">
+				<div class="card shadow-sm">
+					<div class="card-body">
+						<p class="card-text text-dark ct">{{ pitch.category }}</p>
+						<p class="card-title">{{ pitch.pitch_body }}</p>
+						<p class="card-text ct">Date Added: {{ pitch.date_published.strftime('%Y-%m-%d') }}</p>
+						<div class="text-center">
+							<br>
+							<button type="button" id="likes" class="btn btn-sm btn-success" ><i class="far fa-thumbs-up"></i> ( {{ pitch.likes.count() }} )</button>
+							<button type="button" id="dislikes" class="btn btn-sm btn-danger" ><i class="far fa-thumbs-down"></i> ( {{ pitch.dislikes.count() }} )</button>
+							<a href="/add-comment/{{pitch.id}}">
+								<button type="button" id="trash" class="btn btn-sm btn-dark"><i class="far fa-comment"></i> ( {{ pitch.comment.count() }} )</button>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			{% endfor %}
+		</div>
+	</div>
+
+{% endblock %}
