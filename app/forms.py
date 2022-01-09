@@ -16,7 +16,7 @@ class RegisterForm(FlaskForm):
     submit = SubmitField(label=('Sign Up'))
 
 class PitchForm(FlaskForm):
-    pitch_body = TextAreaField(label='Pitch',validators=[DataRequired(), Length(min=6, max=255,  message='⚠️ Pitch length must be between %(min)d and %(max)d characters!')], render_kw={"placeholder": "Your Pitch"})
+    pitch_body = TextAreaField(label='Pitch',validators=[DataRequired(), Length(min=6, max=255,  message='⚠️ Pitch length must be between %(min)d and %(max)d characters!')], render_kw={"placeholder": "Your Pitch", 'rows': 5})
     category = SelectField(label='Select Category',choices=[
         ('Creative Pitches', 'Creative Pitches'),
         ('Business Pitches', 'Business Pitches'),
