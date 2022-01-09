@@ -117,11 +117,12 @@ def my_pitches():
     pitches = Pitch.query.filter_by(user_id = current_user._get_current_object().id)
     return render_template('Pitches.html', pitches = pitches, form = form)
 
-@app.route('/addComent/<pitch>', methods=['POST','GET'])
+@app.route('/add-comment/<pitch>', methods=['POST','GET'])
 @login_required
 def addComment(pitch):
     form = CommentsForm()
-    pitch = Pitch.query.filter_by(id=pitch).first()
+    pitch = Pitch.query.filter_by(id = pitch).first()
+    comments = Comment.query.filter_by(pitches_id = pitch.id)
     comment=form.comment.data
     user_id = current_user._get_current_object().id
 
@@ -129,8 +130,8 @@ def addComment(pitch):
         comment=Comment(comment = comment, pitch = pitch, user_id = user_id)
         db.session.add(comment)
         db.session.commit()
-        return redirect(url_for('addComment'))
-    return render_template('Add Comment.html', form = form)
+        return redirect(url_for('home'))
+    return render_template('Add Comment.html', form = form, pitch = pitch, comments = comments)
 
 @app.route('/pitches/business', methods=['GET'])
 def business():

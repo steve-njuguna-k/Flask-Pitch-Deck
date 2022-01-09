@@ -1,0 +1,61 @@
+{% extends "Base.html" %}
+
+<div class="container">
+	{% include 'Logged In Navbar.html' %}
+</div>
+
+{% block content %}
+
+    <div class="container-fluid landing py-5 text-center ">
+		<h1><b>Pitch <span class="logo-colour">No. {{ pitch.id }}</span></b></h1>
+        <p class="text-muted">{{ pitch.pitch_body }}</p>
+        <button class="btn btn-blue btn-lg" data-toggle="modal" data-target="#staticBackdrop"> Add Comment </button>
+		<div class="row" style="margin-top: 30px;">
+            {% for comment in comments %}
+			<div class="col-sm-4">
+				<div class="card shadow-sm">
+					<div class="card-body">
+						<p class="card-title">{{ comment.comment }}</p>
+						<p class="card-text ct">Added: {{ comment.date_published.strftime('%Y-%m-%d') }}</p>
+					</div>
+				</div>
+			</div>
+			{% endfor %}
+		</div>
+	</div>
+
+    <!-- Modal -->
+	<div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Add A Comment</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+				</div>
+				<div class="modal-body">
+					<form action="" method="POST">
+						{% for field, errors in form.errors.items() %}
+							<div class="alert alert-danger alert-dismissible fade show" role="alert">
+								{{ ', '.join(errors) }}
+								<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+						{% endfor %}
+						{{ form.csrf_token }}
+						<div class="form-group">
+							{{ form.comment(class="form-control", placeholder="Your Comment") }}
+						</div>
+						<div class="form-group">
+							{{ form.submit(class="btn btn-blue btn-block")}}
+							<button type="button" class="btn btn-secondary btn-block" data-dismiss="modal">Close</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+{% endblock %}
