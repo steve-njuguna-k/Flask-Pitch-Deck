@@ -18,10 +18,10 @@
 						<p class="card-text ct">Date Added: {{ pitch.date_published.strftime('%Y-%m-%d') }}</p>
 						<div class="text-center">
 							<br>
-							<a href="/like/{{pitch.id}}">
-								<button type="button" id="likes" class="btn btn-sm btn-blue" ><i class="far fa-thumbs-up"></i> ( {{ pitch.likes }} ) Likes</button>
-							</a>
-							<a href="/dislike/{{pitch.id}}">
+							<form action="/like/{{pitch.id}}" method="POST">
+								<button type="submit" id="likes" class="btn btn-sm btn-blue" ><i class="far fa-thumbs-up"></i> ( {{ pitch.likes }} ) Likes</button>
+							</form>
+							<form action="/dislike/{{pitch.id}}" method="POST">
 								<button type="button" id="dislikes" class="btn btn-sm btn-blue" ><i class="far fa-thumbs-down"></i> ( {{ pitch.dislikes }} ) Dislikes</button>
 							</a>
 							<a href="/add-comment/{{pitch.id}}">

@@ -130,16 +130,24 @@ def addComment(pitch):
         return redirect(url_for('pitches'))
     return render_template('Add Comment.html', form = form, pitch = pitch, comments = comments)
 
+@app.route('/like/<id>',methods=['POST','GET'])
+@login_required
+def like(id):
+    if request.method=="POST":
+        get_likes = Pitch.query.filter_by(id = id).first_or_404()
+        votes = get_likes.likes + 1
+
+        newLikes = Pitch.query.filter_by(id = id).update({"likes": votes})
+        db.session.commit()
+        return redirect(url_for('pitches'))
+
+    return render_template('All Pitches.html')
+
 @app.route('/profile',methods=['POST','GET'])
 @login_required
 def profile():
     user = current_user._get_current_object()
     return render_template('Profile.html', user = user)
-
-@app.route('/likes/<id>',methods=['POST','GET'])
-@login_required
-def like(id):
-    pass
 
 @app.route('/pitches/business', methods=['GET'])
 def business():
