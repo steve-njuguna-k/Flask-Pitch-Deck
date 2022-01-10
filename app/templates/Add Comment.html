@@ -12,6 +12,9 @@
 				<h1><b>Pitch Deck <span class="comment-title">No. {{ pitch.id }}</span></b></h1>
 				<p class="text-muted">{{ pitch.pitch_body }}</p>
 				<button class="btn btn-blue btn-lg" data-toggle="modal" data-target="#staticBackdrop"> Add Comment </button>
+				<a href="{{ url_for('pitches') }}">
+					<button class="btn btn-black btn-lg"> Back </button>
+				</a>
 			</div>
 			<div class="col-sm-8">
 				<h1>Comments</h1>

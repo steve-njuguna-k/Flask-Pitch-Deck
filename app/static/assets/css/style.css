@@ -414,6 +414,10 @@ a:hover {
 	margin-bottom: 50px;
 }
 
+.stats{
+	display: inline;
+}
+
 .footer{
     margin-top: 50px;
     margin-bottom: 50px;
