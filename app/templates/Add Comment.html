@@ -24,6 +24,7 @@
 					<div class="card-body h-100">
 						<p class="card-title">{{ comment.comment }}</p>
 						<p class="card-text ct">Added: {{ comment.date_published.strftime('%Y-%m-%d') }}</p>
+						<p class="card-text text-muted ct">Added By: {{ pitch.user.first_name }} {{ pitch.user.last_name }}</p>
 					</div>
 				</div>
 				{% endfor %}

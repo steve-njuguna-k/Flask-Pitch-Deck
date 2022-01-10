@@ -16,8 +16,8 @@
 						<p class="card-text text-warning ct">{{ pitch.category }}</p>
 						<p class="card-title">" {{ pitch.pitch_body }} "</p>
 						<br>
-						<p class="card-text text-muted ct">Date Added: {{ pitch.date_published.strftime('%Y-%m-%d') }}</p>
-						<p class="card-text text-muted ct">Added By: {{ pitch.user.first_name }} {{ pitch.user.last_name }}</p>
+						<p class="card-text text-muted ct">Date Added: <span class="text-black">{{ pitch.date_published.strftime('%Y-%m-%d') }}</span></p>
+						<p class="card-text text-muted ct">Added By: <span class="text-black">{{ pitch.user.first_name }} {{ pitch.user.last_name }}</span></p>
 						<div class="text-center stats">
 							<br>
 							<form class="stats" action="/like/{{pitch.id}}" method="POST">

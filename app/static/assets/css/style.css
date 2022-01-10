@@ -418,6 +418,10 @@ a:hover {
 	display: inline;
 }
 
+.text-black{
+	color: #000000;
+}
+
 .footer{
     margin-top: 50px;
     margin-bottom: 50px;
