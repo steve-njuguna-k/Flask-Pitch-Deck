@@ -1,22 +1,22 @@
 body {
     font-family:'Nunito', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #f9f9f9;
-    color: #000;
+    color: #22a6ab;
 }
 
 p {
     font-size: 20px;
-	color: #777;
+	color: #003b6b;
 }
 
 a {
     text-decoration: none;
-    color: #fcb400;
+    color: #22a6ab ;
 }
 
 a:hover {
     text-decoration: none;
-    color: #fcb400;
+    color: #22a6ab ;
 }
 
 .landing {
@@ -32,12 +32,12 @@ a:hover {
 }
 
 .navbar.navbar-dark .nav-item .nav-link { 
-    color: #000000!important; 
+    color: #003b6b!important; 
     background-color: #fff;
 } 
 
 .navbar.navbar-dark .nav-item .nav-link:hover { 
-    color: #fcb400!important; 
+    color: #22a6ab !important; 
     background-color: #fff;
 }
 
@@ -58,21 +58,21 @@ a:hover {
 }
 
 .navbar-dark .navbar-toggler {
-    color: #fcb400;
-    border-color: #fcb400;
-	background-color: #fcb400;
+    color: #22a6ab ;
+    border-color: #22a6ab ;
+	background-color: #22a6ab ;
 }
 
 .text-warning{
-	color: #fcb400;
+	color: #22a6ab !important;
 }
 
 .bg-blue{
-	background-color: #fcb400;
+	background-color: #22a6ab ;
 }
 
 .btn-outline-light:hover{
-	color: #fcb400;
+	color: #22a6ab ;
 	background-color: #fff;
 }
 
@@ -81,37 +81,37 @@ a:hover {
 }
 
 .btn-blue{
-    background-color: #000000;
+    background-color: #003b6b;
     color: #fff;
     border-radius: 0px;
 }
 
 .btn-blue:hover{
-    background-color: #fcb400;
+    background-color: #22a6ab ;
     color: #fff;
     border-radius: 0px;
 }
 
 .btn-blue-outline{
-    border-color: #000000;
-	color: #000000;
+    border-color: #003b6b;
+	color: #003b6b;
     border-radius: 0px;
 }
 
 .btn-blue-outline:hover{
-    border-color: #fcb400;
-	color: #fcb400;
+    border-color: #22a6ab ;
+	color: #22a6ab ;
     border-radius: 0px;
 }
 
 .btn-black{
-    background-color: #fcb400;
+    background-color: #22a6ab ;
     color: #fff;
     border-radius: 0px;
 }
 
 .btn-black:hover{
-    background-color: #000000;
+    background-color: #003b6b;
     color: #fff;
     border-radius: 0px;
 }
@@ -121,11 +121,11 @@ a:hover {
 }
 
 .logo-colour {
-    color: #000000;
+    color: #003b6b;
 }
 
 .comment-title{
-	color: #fcb400;
+	color: #003b6b ;
 }
 
 .form-control {
@@ -149,7 +149,7 @@ a:hover {
 }
 
 .login-form form {
-	color: #fcb400;
+	color: #22a6ab ;
 	border-radius: 0px;
 	margin-bottom: 10px;
 	background: #fff;
@@ -158,7 +158,7 @@ a:hover {
 }
 
 .login-form h2  {
-	color: #fcb400;
+	color: #22a6ab ;
 	font-weight: bold;
 	margin-top: 0;
 }
@@ -186,19 +186,19 @@ a:hover {
 .login-form .btn {        
 	font-size: 16px;
 	font-weight: bold;
-	background: #fcb400;
+	background: #22a6ab ;
 	border: none;
 	min-height: 50px;
 }
 
 .login-form .btn:hover, .login-form .btn:focus {
-	background: #000000 !important;
+	background: #003b6b !important;
 	outline: none;
 	min-height: 50px;
 }
 
 .login-form a {
-	color: #000000;
+	color: #003b6b;
 	text-decoration: none;
 }
 
@@ -207,7 +207,7 @@ a:hover {
 }
 
 .login-form form a {
-	color: #000000;
+	color: #003b6b;
 	text-decoration: none;
 }	
 
@@ -226,7 +226,7 @@ a:hover {
 }
 
 .signup-form form {
-	color: #fcb400;
+	color: #22a6ab ;
 	border-radius: 0px;
 	margin-bottom: 5px;
 	background: #fff;
@@ -234,7 +234,7 @@ a:hover {
 	padding: 30px;
 }
 .signup-form h2  {
-	color: #fcb400;
+	color: #22a6ab ;
 	font-weight: bold;
 	margin-top: 0;
 }
@@ -261,19 +261,19 @@ a:hover {
 .signup-form .btn {        
 	font-size: 16px;
 	font-weight: bold;
-	background: #fcb400;
+	background: #22a6ab ;
 	border: none;
 	min-height: 50px;
 }
 
 .signup-form .btn:hover, .signup-form .btn:focus {
-	background: #000000 !important;
+	background: #003b6b !important;
 	outline: none;
 	min-height: 50px;
 }
 
 .signup-form a {
-	color: #000000;
+	color: #003b6b;
 	text-decoration: none;
 }
 
@@ -282,7 +282,7 @@ a:hover {
 }
 
 .signup-form form a {
-	color: #000000;
+	color: #003b6b;
 	text-decoration: none;
 }	
 
@@ -302,7 +302,7 @@ a:hover {
 }
 
 .comment-form form {
-	color: #fcb400;
+	color: #22a6ab ;
 	border-radius: 0px;
 	margin-bottom: 5px;
 	background: #fff;
@@ -310,7 +310,7 @@ a:hover {
 	padding: 30px;
 }
 .comment-form h2  {
-	color: #fcb400;
+	color: #22a6ab ;
 	font-weight: bold;
 	margin-top: 0;
 }
@@ -337,19 +337,19 @@ a:hover {
 .comment-form .btn {        
 	font-size: 16px;
 	font-weight: bold;
-	background: #fcb400;
+	background: #22a6ab ;
 	border: none;
 	min-height: 50px;
 }
 
 .comment-form .btn:hover, .comment-form .btn:focus {
-	background: #000000 !important;
+	background: #003b6b !important;
 	outline: none;
 	min-height: 50px;
 }
 
 .comment-form a {
-	color: #000000;
+	color: #003b6b;
 	text-decoration: none;
 }
 
@@ -358,7 +358,7 @@ a:hover {
 }
 
 .comment-form form a {
-	color: #000000;
+	color: #003b6b;
 	text-decoration: none;
 }	
 
@@ -373,13 +373,13 @@ a:hover {
 
 .btn-link {
     font-weight: 400;
-    color: #fcb400;
+    color: #22a6ab ;
     text-decoration: none;
 }
 
 .btn-link:hover {
     font-weight: 400;
-    color: #fcb400;
+    color: #22a6ab ;
     text-decoration: none;
 }
 
@@ -389,7 +389,7 @@ a:hover {
 }
 
 .dropdown-item:focus, .dropdown-item:active{
-	background-color: #000000;
+	background-color: #003b6b;
 }
 
 .ct{
@@ -402,7 +402,7 @@ a:hover {
 }
 
 .card-title{
-	color: #000000;
+	color: #000;
 }
 
 .alert{
@@ -419,7 +419,11 @@ a:hover {
 }
 
 .text-black{
-	color: #000000;
+	color: #000;
+}
+
+.icon-colour{
+	color: #22a6ab;
 }
 
 .footer{

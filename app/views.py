@@ -140,9 +140,9 @@ def like(id):
 
         newLikes = Pitch.query.filter_by(id = id).update({"likes": votes})
         db.session.commit()
-        return redirect(url_for('pitches'))
+        return redirect(url_for('home'))
 
-    return render_template('All Pitches.html')
+    return render_template('Index.html')
 
 @app.route('/dislike/<id>',methods=['POST','GET'])
 @login_required
@@ -153,9 +153,9 @@ def dislike(id):
 
         newDislikes = Pitch.query.filter_by(id = id).update({"dislikes": votes})
         db.session.commit()
-        return redirect(url_for('pitches'))
+        return redirect(url_for('home'))
 
-    return render_template('All Pitches.html')
+    return render_template('Index.html')
 
 @app.route('/profile',methods=['POST','GET'])
 @login_required
