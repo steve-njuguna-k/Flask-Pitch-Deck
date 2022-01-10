@@ -75,21 +75,3 @@ class Comments(db.Model):
 
     def __repr__(self):
         return '<Comment: {}>'.format(self.comment)
-
-# class Like(db.Model):
-#     __tablename__ = 'likes'
-
-#     id = db.Column(db.Integer,primary_key=True)
-#     pitch_id = db.Column(db.Integer,db.ForeignKey('pitches.id'))
-#     user_id = db.Column(db.Integer,db.ForeignKey('users.id'))
-
-#     @classmethod
-#     def get_likes(cls,id):
-#         likes = Like.query.filter_by(pitch_id=id).all()
-#         return likes
-
-# class DisLike(db.Model):
-#     __tablename__ = 'dislikes'
-#     id = db.Column(db.Integer,primary_key=True)
-#     pitch_id = db.Column(db.Integer,db.ForeignKey('pitches.id'))
-#     user_id = db.Column(db.Integer,db.ForeignKey('users.id'))
