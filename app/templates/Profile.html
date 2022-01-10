@@ -1,0 +1,26 @@
+{% extends "Base.html" %}
+
+<div class="container">
+	{% include 'Logged In Navbar.html' %}
+</div>
+
+{% block content %}
+
+    <div class="container-fluid profile-landing">
+		<div class="row ">
+			<div class="col-sm-4 text-center"></div>
+			<div class="col-sm-4 text-center">
+				<div class="card shadow-sm">
+					<div class="card-body">
+                        <i class="fal fa-user-circle fa-10x"></i>
+						<h1 class="card-text text-dark">{{ user.first_name }} {{ user.last_name }}</h1>
+						<p class="card-text text-dark">{{ user.email }}</p>
+						<p class="card-text text-dark">Member Since: {{ user.registered_on.strftime('%Y-%m-%d') }}</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-4 text-center"></div>
+		</div>
+	</div>
+
+{% endblock %}

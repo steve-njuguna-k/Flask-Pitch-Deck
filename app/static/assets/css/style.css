@@ -23,6 +23,10 @@ a:hover {
     margin-top: 75px;
 }
 
+.profile-landing {
+    margin-top: 150px;
+}
+
 .navbar.navbar-dark .nav-item .nav-link { 
     color: #022b69!important; 
     background-color: #fff;

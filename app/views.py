@@ -2,7 +2,7 @@ import datetime
 from app import app
 from flask import render_template, flash, redirect, request, url_for
 from .email import send_email
-from .models import Comment, UserModel, db, Pitch
+from .models import Comment, Like, UserModel, db, Pitch
 from flask_login import current_user, login_user, logout_user, login_required
 from .forms import CommentsForm, LoginForm, RegisterForm, PitchForm
 from flask_bcrypt import Bcrypt
@@ -12,6 +12,7 @@ bcrypt = Bcrypt(app)
 @app.route('/', methods=['POST','GET'])
 def home():
     pitches = Pitch.query.all()
+    user = UserModel.query.filter_by(id=current_user._get_current_object().id)
     form = PitchForm()
     if form.validate_on_submit():
         pitch_body = form.pitch_body.data
@@ -24,7 +25,7 @@ def home():
 
         return redirect(url_for('home'))
 
-    return render_template('Index.html', form = form, pitches = pitches)
+    return render_template('Index.html', form = form, pitches = pitches, user = user)
 
 @app.route('/login/', methods = ['GET', 'POST'])
 def login():
@@ -123,7 +124,7 @@ def addComment(pitch):
     form = CommentsForm()
     pitch = Pitch.query.filter_by(id = pitch).first()
     comments = Comment.query.filter_by(pitches_id = pitch.id)
-    comment=form.comment.data
+    comment = form.comment.data
     user_id = current_user._get_current_object().id
 
     if form.validate_on_submit():
@@ -132,6 +133,12 @@ def addComment(pitch):
         db.session.commit()
         return redirect(url_for('pitches'))
     return render_template('Add Comment.html', form = form, pitch = pitch, comments = comments)
+
+@app.route('/profile',methods=['POST','GET'])
+@login_required
+def profile():
+    user = current_user._get_current_object()
+    return render_template('Profile.html', user = user)
 
 @app.route('/pitches/business', methods=['GET'])
 def business():
