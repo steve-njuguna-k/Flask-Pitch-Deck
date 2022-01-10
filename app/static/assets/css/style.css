@@ -1,7 +1,7 @@
 body {
     font-family:'Nunito', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #f9f9f9;
-    color: #fcb400;
+    color: #000;
 }
 
 p {
@@ -28,7 +28,7 @@ a:hover {
 }
 
 .pitch-card{
-	margin-bottom: 50px;
+	margin-bottom: 20px;
 }
 
 .navbar.navbar-dark .nav-item .nav-link { 
@@ -122,6 +122,10 @@ a:hover {
 
 .logo-colour {
     color: #000000;
+}
+
+.comment-title{
+	color: #fcb400;
 }
 
 .form-control {
@@ -393,7 +397,7 @@ a:hover {
 }
 
 .card{
-	margin-bottom: 40px;
+	margin-bottom: 20px;
 	border-radius: 0px;
 }
 

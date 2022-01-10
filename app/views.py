@@ -140,6 +140,12 @@ def profile():
     user = current_user._get_current_object()
     return render_template('Profile.html', user = user)
 
+@app.route('/likes/<id>',methods=['POST','GET'])
+@login_required
+def like(id):
+    pitch_id = Pitch.query.filter_by(id = id).first()
+    likes = Like.query.filter_by(pitches_id = id).all()
+
 @app.route('/pitches/business', methods=['GET'])
 def business():
     pitches = Pitch.query.filter_by(category = "Business Pitches").order_by(Pitch.category.desc())

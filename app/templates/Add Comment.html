@@ -6,21 +6,25 @@
 
 {% block content %}
 
-    <div class="container-fluid landing py-5 text-center ">
-		<h1><b>Pitch Deck <span class="logo-colour">No. {{ pitch.id }}</span></b></h1>
-        <p class="text-muted">{{ pitch.pitch_body }}</p>
-        <button class="btn btn-blue btn-lg" data-toggle="modal" data-target="#staticBackdrop"> Add Comment </button>
-		<div class="row" style="margin-top: 30px;">
-            {% for comment in comments %}
-			<div class="col-sm-4">
+    <div class="container-fluid landing py-5">
+		<div class="row">
+			<div class="col-sm-4" style="margin-bottom: 20px;">
+				<h1><b>Pitch Deck <span class="comment-title">No. {{ pitch.id }}</span></b></h1>
+				<p class="text-muted">{{ pitch.pitch_body }}</p>
+				<button class="btn btn-blue btn-lg" data-toggle="modal" data-target="#staticBackdrop"> Add Comment </button>
+			</div>
+			<div class="col-sm-8">
+				<h1>Comments</h1>
+				<hr>
+				{% for comment in comments %}
 				<div class="card shadow-sm">
-					<div class="card-body">
+					<div class="card-body h-100">
 						<p class="card-title">{{ comment.comment }}</p>
 						<p class="card-text ct">Added: {{ comment.date_published.strftime('%Y-%m-%d') }}</p>
 					</div>
 				</div>
+				{% endfor %}
 			</div>
-			{% endfor %}
 		</div>
 	</div>
 
