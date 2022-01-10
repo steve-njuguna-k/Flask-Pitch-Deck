@@ -1,7 +1,7 @@
 body {
     font-family:'Nunito', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #f9f9f9;
-    color: #022b69;
+    color: #fcb400;
 }
 
 p {
@@ -11,12 +11,12 @@ p {
 
 a {
     text-decoration: none;
-    color: #022b69;
+    color: #fcb400;
 }
 
 a:hover {
     text-decoration: none;
-    color: #022b69;
+    color: #fcb400;
 }
 
 .landing {
@@ -32,12 +32,12 @@ a:hover {
 }
 
 .navbar.navbar-dark .nav-item .nav-link { 
-    color: #022b69!important; 
+    color: #000000!important; 
     background-color: #fff;
 } 
 
 .navbar.navbar-dark .nav-item .nav-link:hover { 
-    color: #22a6ab!important; 
+    color: #fcb400!important; 
     background-color: #fff;
 }
 
@@ -58,17 +58,21 @@ a:hover {
 }
 
 .navbar-dark .navbar-toggler {
-    color: #022b69;
-    border-color: #022b69;
-	background-color: #022b69;
+    color: #fcb400;
+    border-color: #fcb400;
+	background-color: #fcb400;
+}
+
+.text-warning{
+	color: #fcb400;
 }
 
 .bg-blue{
-	background-color: #022b69;
+	background-color: #fcb400;
 }
 
 .btn-outline-light:hover{
-	color: #022b69;
+	color: #fcb400;
 	background-color: #fff;
 }
 
@@ -77,37 +81,37 @@ a:hover {
 }
 
 .btn-blue{
-    background-color: #22a6ab;
+    background-color: #000000;
     color: #fff;
     border-radius: 0px;
 }
 
 .btn-blue:hover{
-    background-color: #022b69;
+    background-color: #fcb400;
     color: #fff;
     border-radius: 0px;
 }
 
 .btn-blue-outline{
-    border-color: #22a6ab;
-	color: #22a6ab;
+    border-color: #000000;
+	color: #000000;
     border-radius: 0px;
 }
 
 .btn-blue-outline:hover{
-    border-color: #022b69;
-	color: #022b69;
+    border-color: #fcb400;
+	color: #fcb400;
     border-radius: 0px;
 }
 
 .btn-black{
-    background-color: #022b69;
+    background-color: #fcb400;
     color: #fff;
     border-radius: 0px;
 }
 
 .btn-black:hover{
-    background-color: #22a6ab;
+    background-color: #000000;
     color: #fff;
     border-radius: 0px;
 }
@@ -117,7 +121,7 @@ a:hover {
 }
 
 .logo-colour {
-    color: #22a6ab;
+    color: #000000;
 }
 
 .form-control {
@@ -141,7 +145,7 @@ a:hover {
 }
 
 .login-form form {
-	color: #022b69;
+	color: #fcb400;
 	border-radius: 0px;
 	margin-bottom: 10px;
 	background: #fff;
@@ -150,7 +154,7 @@ a:hover {
 }
 
 .login-form h2  {
-	color: #022b69;
+	color: #fcb400;
 	font-weight: bold;
 	margin-top: 0;
 }
@@ -178,19 +182,19 @@ a:hover {
 .login-form .btn {        
 	font-size: 16px;
 	font-weight: bold;
-	background: #022b69;
+	background: #fcb400;
 	border: none;
 	min-height: 50px;
 }
 
 .login-form .btn:hover, .login-form .btn:focus {
-	background: #22a6ab !important;
+	background: #000000 !important;
 	outline: none;
 	min-height: 50px;
 }
 
 .login-form a {
-	color: #22a6ab;
+	color: #000000;
 	text-decoration: none;
 }
 
@@ -199,7 +203,7 @@ a:hover {
 }
 
 .login-form form a {
-	color: #22a6ab;
+	color: #000000;
 	text-decoration: none;
 }	
 
@@ -218,7 +222,7 @@ a:hover {
 }
 
 .signup-form form {
-	color: #022b69;
+	color: #fcb400;
 	border-radius: 0px;
 	margin-bottom: 5px;
 	background: #fff;
@@ -226,7 +230,7 @@ a:hover {
 	padding: 30px;
 }
 .signup-form h2  {
-	color: #022b69;
+	color: #fcb400;
 	font-weight: bold;
 	margin-top: 0;
 }
@@ -253,19 +257,19 @@ a:hover {
 .signup-form .btn {        
 	font-size: 16px;
 	font-weight: bold;
-	background: #022b69;
+	background: #fcb400;
 	border: none;
 	min-height: 50px;
 }
 
 .signup-form .btn:hover, .signup-form .btn:focus {
-	background: #22a6ab !important;
+	background: #000000 !important;
 	outline: none;
 	min-height: 50px;
 }
 
 .signup-form a {
-	color: #22a6ab;
+	color: #000000;
 	text-decoration: none;
 }
 
@@ -274,7 +278,7 @@ a:hover {
 }
 
 .signup-form form a {
-	color: #22a6ab;
+	color: #000000;
 	text-decoration: none;
 }	
 
@@ -294,7 +298,7 @@ a:hover {
 }
 
 .comment-form form {
-	color: #022b69;
+	color: #fcb400;
 	border-radius: 0px;
 	margin-bottom: 5px;
 	background: #fff;
@@ -302,7 +306,7 @@ a:hover {
 	padding: 30px;
 }
 .comment-form h2  {
-	color: #022b69;
+	color: #fcb400;
 	font-weight: bold;
 	margin-top: 0;
 }
@@ -329,19 +333,19 @@ a:hover {
 .comment-form .btn {        
 	font-size: 16px;
 	font-weight: bold;
-	background: #022b69;
+	background: #fcb400;
 	border: none;
 	min-height: 50px;
 }
 
 .comment-form .btn:hover, .comment-form .btn:focus {
-	background: #22a6ab !important;
+	background: #000000 !important;
 	outline: none;
 	min-height: 50px;
 }
 
 .comment-form a {
-	color: #22a6ab;
+	color: #000000;
 	text-decoration: none;
 }
 
@@ -350,7 +354,7 @@ a:hover {
 }
 
 .comment-form form a {
-	color: #22a6ab;
+	color: #000000;
 	text-decoration: none;
 }	
 
@@ -365,13 +369,13 @@ a:hover {
 
 .btn-link {
     font-weight: 400;
-    color: #022b69;
+    color: #fcb400;
     text-decoration: none;
 }
 
 .btn-link:hover {
     font-weight: 400;
-    color: #022b69;
+    color: #fcb400;
     text-decoration: none;
 }
 
@@ -381,7 +385,7 @@ a:hover {
 }
 
 .dropdown-item:focus, .dropdown-item:active{
-	background-color: #22a6ab;
+	background-color: #000000;
 }
 
 .ct{
@@ -394,7 +398,7 @@ a:hover {
 }
 
 .card-title{
-	color: #22a6ab;
+	color: #000000;
 }
 
 .alert{
