@@ -10,8 +10,8 @@
 		<h1 class="text-center pitch-title"><b>Interview <span class="logo-colour">Pitches</span></b></h1>
 		<div class="row">
             {% for pitch in pitches %}
-			<div class="col-sm-4">
-				<div class="card shadow-sm">
+			<div class="col-sm-4 pitch-card">
+				<div class="card shadow-sm h-100">
 					<div class="card-body">
 						<p class="card-text text-dark ct">{{ pitch.category }}</p>
 						<p class="card-title">{{ pitch.pitch_body }}</p>

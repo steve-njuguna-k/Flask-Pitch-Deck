@@ -27,6 +27,10 @@ a:hover {
     margin-top: 150px;
 }
 
+.pitch-card{
+	margin-bottom: 50px;
+}
+
 .navbar.navbar-dark .nav-item .nav-link { 
     color: #022b69!important; 
     background-color: #fff;

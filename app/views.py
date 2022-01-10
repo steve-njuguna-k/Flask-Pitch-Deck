@@ -12,7 +12,7 @@ bcrypt = Bcrypt(app)
 @app.route('/', methods=['POST','GET'])
 def home():
     pitches = Pitch.query.all()
-    user = UserModel.query.filter_by(id=current_user._get_current_object().id)
+    user = current_user._get_current_object()
     form = PitchForm()
     if form.validate_on_submit():
         pitch_body = form.pitch_body.data
