@@ -2,7 +2,7 @@ import datetime
 from app import app
 from flask import render_template, flash, redirect, request, url_for
 from .email import send_email
-from .models import Comment, User, db, Pitch
+from .models import Comments, User, db, Pitch
 from flask_login import current_user, login_user, logout_user, login_required
 from .forms import CommentsForm, LoginForm, RegisterForm, PitchForm
 from flask_bcrypt import Bcrypt
@@ -119,15 +119,16 @@ def my_pitches():
 def addComment(pitch):
     form = CommentsForm()
     pitch = Pitch.query.filter_by(id = pitch).first()
-    comments = Comment.query.filter_by(pitch_id = pitch.id)
+    comments = Comments.query.filter_by(pitch_id = pitch.id)
     comment = form.comment.data
     user_id = current_user._get_current_object().id
 
     if form.validate_on_submit():
-        comment=Comment(comment = comment, pitch = pitch, user_id = user_id)
+        comment=Comments(comment = comment, pitch = pitch, user_id = user_id)
         db.session.add(comment)
         db.session.commit()
         return redirect(url_for('pitches'))
+
     return render_template('Add Comment.html', form = form, pitch = pitch, comments = comments)
 
 @app.route('/like/<id>',methods=['POST','GET'])
@@ -138,6 +139,19 @@ def like(id):
         votes = get_likes.likes + 1
 
         newLikes = Pitch.query.filter_by(id = id).update({"likes": votes})
+        db.session.commit()
+        return redirect(url_for('pitches'))
+
+    return render_template('All Pitches.html')
+
+@app.route('/dislike/<id>',methods=['POST','GET'])
+@login_required
+def dislike(id):
+    if request.method=="POST":
+        get_likes = Pitch.query.filter_by(id = id).first_or_404()
+        votes = get_likes.dislikes + 1
+
+        newDislikes = Pitch.query.filter_by(id = id).update({"dislikes": votes})
         db.session.commit()
         return redirect(url_for('pitches'))
 

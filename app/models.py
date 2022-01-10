@@ -14,6 +14,8 @@ class User(UserMixin, db.Model):
     last_name = db.Column(db.String(15), unique=True)
     email = db.Column(db.String(50), unique=True)
     password = db.Column(db.String(256), unique=True)
+    pitches = db.relationship('Pitch',backref = 'user',lazy = "dynamic")
+    comments = db.relationship('Comments',backref = 'user',lazy = "dynamic")
     registered_on = db.Column(db.DateTime, nullable=False)
     confirmed = db.Column(db.Boolean, nullable=False, default=False)
     confirmed_on = db.Column(db.DateTime, nullable=True)
@@ -40,7 +42,7 @@ class User(UserMixin, db.Model):
         return self.id
 
     def __repr__(self):
-        return '<Email Address: {}'.format(self.email)
+        return f'User {self.first_name} {self.last_name}'
 
 #Since Flask_Login knows nothing about databases, we need to create a function to link both of them.
 @login.user_loader
@@ -54,7 +56,7 @@ class Pitch(db.Model):
     pitch_body = db.Column(db.String(255))
     user_id = db.Column(db.Integer,db.ForeignKey('users.id'))
     category = db.Column(db.String(50))
-    comment = db.relationship('Comment', backref='pitch', lazy='dynamic')
+    comment = db.relationship('Comments', backref='pitch', lazy='dynamic')
     date_published = db.Column(db.DateTime, default = datetime.datetime.utcnow())
     likes = db.Column(db.Integer, default=0)
     dislikes = db.Column(db.Integer, default=0)
@@ -62,7 +64,7 @@ class Pitch(db.Model):
     def __repr__(self):
         return '<Pitch: {}>'.format(self.pitch_body)
 
-class Comment(db.Model):
+class Comments(db.Model):
     __tablename__ = 'comments'
 
     id = db.Column(db.Integer,primary_key=True)
