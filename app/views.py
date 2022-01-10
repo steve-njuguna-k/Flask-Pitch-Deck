@@ -2,7 +2,7 @@ import datetime
 from app import app
 from flask import render_template, flash, redirect, request, url_for
 from .email import send_email
-from .models import Comment, Like, UserModel, db, Pitch
+from .models import Comment, User, db, Pitch
 from flask_login import current_user, login_user, logout_user, login_required
 from .forms import CommentsForm, LoginForm, RegisterForm, PitchForm
 from flask_bcrypt import Bcrypt
@@ -31,7 +31,7 @@ def home():
 def login():
     form = LoginForm(request.form)
     if form.validate_on_submit():
-        user = UserModel.query.filter_by(email=form.email.data).first()
+        user = User.query.filter_by(email=form.email.data).first()
         if user and user.confirmed ==0:
             flash('⚠️ Your Acount Is Not Activated! Please Check Your Email Inbox And Click The Activation Link We Sent To Activate It', 'danger')
             return render_template('Login.html', form=form)
@@ -42,10 +42,6 @@ def login():
         
         if user and not bcrypt.check_password_hash(user.password, request.form['password']):
             flash('⚠️ Invalid Password!', 'danger')
-            return render_template('Login.html', form=form)
-
-        if not user and bcrypt.check_password_hash(user.password, request.form['password']):
-            flash('⚠️ Invalid Email Address!', 'danger')
             return render_template('Login.html', form=form)
 
         if not user:
@@ -59,7 +55,7 @@ def register():
     form = RegisterForm(request.form)
     if form.validate_on_submit():
         password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
-        user = UserModel(first_name=form.first_name.data, last_name=form.last_name.data, email=form.email.data, password=password, confirmed=False)
+        user = User(first_name=form.first_name.data, last_name=form.last_name.data, email=form.email.data, password=password, confirmed=False)
         db.session.add(user)
         db.session.commit()
 
@@ -84,12 +80,12 @@ def logout():
 
 @app.route('/confirm/<token>')
 def confirm_email(token):
-    if UserModel.confirmed==1:
+    if User.confirmed==1:
         flash('✅ Account Already Confirmed! You Can Log In.', 'success')
         return redirect(url_for('login'))
 
     email = confirm_token(token)
-    user = UserModel.query.filter_by(email=email).first_or_404()
+    user = User.query.filter_by(email=email).first_or_404()
 
     if user.email == email:
         user.confirmed = True
@@ -104,7 +100,7 @@ def confirm_email(token):
 
 @app.route('/sent')
 def email_verification_sent():
-    if UserModel.confirmed==1:
+    if User.confirmed==1:
         flash('✅ You Can Now Log In!', 'success')
         return redirect(url_for('login'))
     else:
@@ -123,7 +119,7 @@ def my_pitches():
 def addComment(pitch):
     form = CommentsForm()
     pitch = Pitch.query.filter_by(id = pitch).first()
-    comments = Comment.query.filter_by(pitches_id = pitch.id)
+    comments = Comment.query.filter_by(pitch_id = pitch.id)
     comment = form.comment.data
     user_id = current_user._get_current_object().id
 
@@ -143,8 +139,7 @@ def profile():
 @app.route('/likes/<id>',methods=['POST','GET'])
 @login_required
 def like(id):
-    pitch_id = Pitch.query.filter_by(id = id).first()
-    likes = Like.query.filter_by(pitches_id = id).all()
+    pass
 
 @app.route('/pitches/business', methods=['GET'])
 def business():

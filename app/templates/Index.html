@@ -80,9 +80,32 @@
 	</div>
 
 	<div class="container-fluid">
-		<h1><b>All <span class="logo-colour">Pitches</span></b></h1>
+		<h1><b>All <span class="comment-title">Pitches</span></b></h1>
 		<hr><br>
 		<div class="row">
+			<div class="col-sm-4 pitch-card">
+				<div class="card shadow-sm h-100">
+					<div class="card-body">
+						<p class="card-text text-warning ct"> Sales Pitches </p>
+						<p class="card-title">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+						<p class="card-text ct">Date Added: 2022-01-01</p>
+						<div class="text-center">
+							<br>
+							<form method="POST">
+								<a href="#">
+									<button type="button" id="likes" class="btn btn-sm btn-blue" ><i class="far fa-thumbs-up"></i> ( 10 ) Likes</button>
+								</a>
+								<a href="#">
+									<button type="button" id="dislikes" class="btn btn-sm btn-blue" ><i class="far fa-thumbs-down"></i> ( 3 ) Dislikes</button>
+								</a>
+								<a href="#">
+									<button type="button" id="trash" class="btn btn-sm btn-blue"><i class="far fa-comment"></i> ( 20 ) Comments</button>
+								</a>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
 			{% for pitch in pitches %}
 			<div class="col-sm-4 pitch-card">
 				<div class="card shadow-sm h-100">
@@ -92,11 +115,11 @@
 						<p class="card-text ct">Date Added: {{ pitch.date_published.strftime('%Y-%m-%d') }}</p>
 						<div class="text-center">
 							<br>
-							<a href="#">
-								<button type="button" id="likes" class="btn btn-sm btn-blue" ><i class="far fa-thumbs-up"></i> ( {{ pitch.likes.count() }} ) Likes</button>
+							<a href="/like/{{pitch.id}}">
+								<button type="button" id="likes" class="btn btn-sm btn-blue" ><i class="far fa-thumbs-up"></i> ( {{ pitch.likes }} ) Likes</button>
 							</a>
-							<a href="#">
-								<button type="button" id="dislikes" class="btn btn-sm btn-blue" ><i class="far fa-thumbs-down"></i> ( {{ pitch.dislikes.count() }} ) Dislikes</button>
+							<a href="/dislike/{{pitch.id}}">
+								<button type="button" id="dislikes" class="btn btn-sm btn-blue" ><i class="far fa-thumbs-down"></i> ( {{ pitch.dislikes }} ) Dislikes</button>
 							</a>
 							<a href="/add-comment/{{pitch.id}}">
 								<button type="button" id="trash" class="btn btn-sm btn-blue"><i class="far fa-comment"></i> ( {{ pitch.comment.count() }} ) Comments</button>
