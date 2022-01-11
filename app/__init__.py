@@ -1,6 +1,6 @@
 from flask import Flask
 from flask_migrate import Migrate
-from .models import db, login
+from .models import login, db
 from flask_mail import Mail
 from flask_bcrypt import Bcrypt
 from dotenv import load_dotenv
