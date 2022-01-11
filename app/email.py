@@ -1,6 +1,6 @@
 from flask_mail import Message
 from app import mail
-from config import MAIL_DEFAULT_SENDER
+from .config import MAIL_DEFAULT_SENDER
 
 def send_email(to, subject, template):
     msg = Message(
