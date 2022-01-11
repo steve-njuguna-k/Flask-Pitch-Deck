@@ -1,17 +1,17 @@
 from itsdangerous import URLSafeTimedSerializer
-from .config import SECRET_KEY, SQLALCHEMY_DATABASE_URI
+from app import app
 
 def generate_confirmation_token(email):
-    serializer = URLSafeTimedSerializer(SECRET_KEY)
-    return serializer.dumps(email, salt = SQLALCHEMY_DATABASE_URI)
+    serializer = URLSafeTimedSerializer(app.config['SECRET_KEY'])
+    return serializer.dumps(email, salt = app.config['SQLALCHEMY_DATABASE_URI'])
 
 
 def confirm_token(token, expiration=3600):
-    serializer = URLSafeTimedSerializer(SECRET_KEY)
+    serializer = URLSafeTimedSerializer(app.config['SECRET_KEY'])
     try:
         email = serializer.loads(
             token,
-            salt = SQLALCHEMY_DATABASE_URI,
+            salt = app.config['SQLALCHEMY_DATABASE_URI'],
             max_age = expiration
         )
     except:
