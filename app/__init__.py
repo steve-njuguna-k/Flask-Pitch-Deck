@@ -1,6 +1,7 @@
 from flask import Flask
 from flask_migrate import Migrate
-from .models import login, db
+from flask_sqlalchemy import SQLAlchemy
+from .models import login
 from flask_mail import Mail
 from flask_bcrypt import Bcrypt
 from dotenv import load_dotenv
@@ -8,6 +9,8 @@ import os
 
 mail = Mail()
 app = Flask(__name__)
+
+db = SQLAlchemy(app)
 
 from app import views
 
