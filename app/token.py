@@ -1,5 +1,5 @@
 from itsdangerous import URLSafeTimedSerializer
-from .config import SECRET_KEY, SQLALCHEMY_DATABASE_URI
+from config import SECRET_KEY, SQLALCHEMY_DATABASE_URI
 
 def generate_confirmation_token(email):
     serializer = URLSafeTimedSerializer(SECRET_KEY)
