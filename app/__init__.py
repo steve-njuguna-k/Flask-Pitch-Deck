@@ -1,5 +1,6 @@
 from flask import Flask
 from flask_migrate import Migrate
+from flask_sqlalchemy import SQLAlchemy
 from .models import db, login
 from flask_mail import Mail
 from flask_bcrypt import Bcrypt
@@ -15,6 +16,7 @@ load_dotenv('.env')
 app.config.from_pyfile('config.py')
 
 #create postgresql database (flask db init, flask db migrate, flask db upgrade)
+db = SQLAlchemy(app)
 db.init_app(app)
 migrate = Migrate(app, db)
 
