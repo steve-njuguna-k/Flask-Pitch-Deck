@@ -1,7 +1,7 @@
 from flask import Flask
 from flask_login import LoginManager
 from flask_migrate import Migrate
-from .models import User, db, login
+from .models import User, db
 from flask_mail import Mail
 from dotenv import load_dotenv
 from .commands import create_tables
