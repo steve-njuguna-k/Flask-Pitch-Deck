@@ -26,7 +26,7 @@ The application requires the following installations to operate:
 - python 3.9.6
 
 ## Project Setup Instructions
-1) Git clone the repository 
+1) git clone the repository 
 ```
 https://github.com/steve-njuguna-k/Flask-Pitch-Deck.git
 ```
@@ -34,13 +34,21 @@ https://github.com/steve-njuguna-k/Flask-Pitch-Deck.git
 ```
 cd Flask-Pitch-Deck
 ```
-3. Open CMD & Install Dependancies
+3. create a virtual env
+```
+py -m venv env
+```
+4. activate env
+```
+env\scripts\activate
+```
+5. Open CMD & Install Dependancies
 ```
 pip install -r requirements.txt
 ```
-4. Execute main.py
+6. Execute app.py
 ```
-main.py
+app.py
 ```
 
 ## Known Bugs
