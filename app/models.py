@@ -1,9 +1,8 @@
 import datetime
 from flask_sqlalchemy import SQLAlchemy
-from flask_login import UserMixin, LoginManager
+from flask_login import UserMixin
 
 db = SQLAlchemy()
-login = LoginManager()
 
 # Create User Model which contains id [Auto Generated], first_name, last_name, email and password
 class User(UserMixin, db.Model):

@@ -1,5 +1,5 @@
 from flask import Flask
-from flask_login import login_manager
+from flask_login import LoginManager
 from flask_migrate import Migrate
 from .models import User, db, login
 from flask_mail import Mail
@@ -8,6 +8,7 @@ from .commands import create_tables
 import os
 
 mail = Mail()
+login = LoginManager()
 load_dotenv('.env')
 
 def create_app(config_file='config.py'):
@@ -19,7 +20,7 @@ def create_app(config_file='config.py'):
     login.login_view = 'login'
     mail.init_app(app)
 
-    @login_manager.user_loader
+    @login.user_loader
     def load_user(user_id):
         return User.query.get(user_id)
 
