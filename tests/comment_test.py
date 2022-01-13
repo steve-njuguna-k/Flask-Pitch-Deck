@@ -10,3 +10,6 @@ class CommentsTest(unittest.TestCase):
 
     def test_instance(self):
         self.assertTrue(isinstance(self.new_user, Comments))
+
+if __name__ == "__main__":
+    unittest.main()
