@@ -165,7 +165,7 @@ def profile():
 
 @app.route('/pitches/business', methods=['GET'])
 def business():
-    pitches = Pitch.query.filter_by(category = "Business Pitches").order_by(Pitch.category.desc())
+    pitches = Pitch.query.filter_by(category = "Business Pitches")
     return render_template('Business.html', pitches = pitches)
 
 @app.route('/pitches/all', methods=['GET'])
@@ -175,20 +175,20 @@ def pitches():
 
 @app.route('/pitches/creative', methods=['GET'])
 def creative():
-    pitches = Pitch.query.filter_by(category = "Creative Pitches").order_by(Pitch.category.desc())
+    pitches = Pitch.query.filter_by(category = "Creative Pitches")
     return render_template('Creative.html', pitches = pitches)
 
 @app.route('/pitches/interview', methods=['GET'])
 def interview():
-    pitches = Pitch.query.filter_by(category = "Interview Pitches").order_by(Pitch.category.desc())
+    pitches = Pitch.query.filter_by(category = "Interview Pitches")
     return render_template('Interview.html', pitches = pitches)
 
 @app.route('/pitches/sales', methods=['GET'])
 def sales():
-    pitches = Pitch.query.filter_by(category = "Sales Pitches").order_by(Pitch.category.desc())
+    pitches = Pitch.query.filter_by(category = "Sales Pitches")
     return render_template('Sales.html', pitches = pitches)
 
 @app.route('/pitches/product', methods=['GET'])
 def product():
-    pitches = Pitch.query.filter_by(category = "Product Pitches").order_by(Pitch.category.desc())
+    pitches = Pitch.query.filter_by(category = "Product Pitches")
     return render_template('Product.html', pitches = pitches)
