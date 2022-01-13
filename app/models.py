@@ -44,11 +44,6 @@ class User(UserMixin, db.Model):
     def __repr__(self):
         return f'User {self.first_name} {self.last_name}'
 
-#Since Flask_Login knows nothing about databases, we need to create a function to link both of them.
-@login.user_loader
-def load_user(id):
-    return User.query.get(int(id))
-
 class Pitch(db.Model):
     __tablename__ = 'pitches'
 
