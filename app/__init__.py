@@ -1,3 +1,4 @@
+import unittest
 from flask import Flask
 from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
@@ -31,5 +32,8 @@ bcrypt = Bcrypt(app)
 @login.user_loader
 def load_user(user_id):
     return User.query.get(user_id)
+
+tests = unittest.TestLoader().discover('tests')
+unittest.TextTestRunner(verbosity=2).run(tests)
 
 from app import views
