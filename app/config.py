@@ -3,7 +3,11 @@ import os
 # main config
 SECRET_KEY = os.environ.get('SECRET_KEY')
 SECURITY_PASSWORD_SALT = os.environ.get('SECURITY_PASSWORD_SALT')
-SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL?sslmode=require').replace('postgres://', 'postgresql://')
+SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL?sslmode=require')
+
+if SQLALCHEMY_DATABASE_URI and SQLALCHEMY_DATABASE_URI.startswith("postgres://"):
+    SQLALCHEMY_DATABASE_URI = SQLALCHEMY_DATABASE_URI.replace("postgres://", "postgresql://", 1)
+
 SQLALCHEMY_TRACK_MODIFICATIONS = os.environ.get('SQLALCHEMY_TRACK_MODIFICATIONS')
 DEBUG = False
 BCRYPT_LOG_ROUNDS = 13
