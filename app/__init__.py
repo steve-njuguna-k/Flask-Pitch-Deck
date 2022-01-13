@@ -6,9 +6,7 @@ from flask_mail import Mail
 from flask_bcrypt import Bcrypt
 from dotenv import load_dotenv
 from flask_login import LoginManager
-from dotenv import load_dotenv
 from flask_heroku import Heroku
-import os
 
 mail = Mail()
 login = LoginManager()
