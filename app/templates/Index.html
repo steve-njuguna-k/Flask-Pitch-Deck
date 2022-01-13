@@ -6,6 +6,7 @@
 
 {% block content %}
 
+	{% block main %}
 	<div class="text-center landing">
 		<h1><span class="logo-colour">First Impression</span> Is Everything!</h1>
 		<p>In life, you only have 60 seconds to impress someone. 1 minute can make or break you. How do we make sure that you use your 1 minute to actually say something meaningful? Express yourself in the most interesting way possible.</p>
@@ -171,9 +172,14 @@
 			</div>
 		</div>
 	</div>
+	{% endblock %}
+
+	{% block footer %}
+	<div class="container">
+		<div id="footer">
+			<p class="text-center">© 2022 Steve Njuguna</p>
+		</div>
+	</div>
+	{% endblock %}
 
 {% endblock content %}
-
-<div class="container footer">
-	{% include 'Footer.html' %}
-</div>
